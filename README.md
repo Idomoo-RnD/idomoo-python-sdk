@@ -12,7 +12,7 @@ Python 2.7 and 3.4+
 
 
 ```sh
-pip install git+git@github.com:Idomoo-RnD/idomoo-python-sdk.git
+pip install git+https://github.com/Idomoo-RnD/idomoo-python-sdk.git
 ```
 (you may need to run `pip` with root permission: `sudo pip install git+https://github.com//.git`)
 
