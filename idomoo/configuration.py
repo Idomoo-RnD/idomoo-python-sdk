@@ -25,14 +25,13 @@ from six.moves import http_client as httplib
 
 __version__ = "0.0.1"
 __pypi_username__ = "idomoo"
-__pypi_packagename__ = "idomoorestsdk"
+__pypi_packagename__ = "idomoo"
 __github_username__ = "idomoo"
-__github_reponame__ = "Idomoo-SDK"
+__github_reponame__ = "idomoo-python-sdk"
 
 _endpoint_map = {
     'usa': 'https://usa-api.idomoo.com/api/v2',
-    'eur': 'https://eur-api.idomoo.com/api/v2',
-    'preprod': "https://pre-prod-6-0.idomoo.com/api/v2"
+    'eur': 'https://eur-api.idomoo.com/api/v2'
 }
 
 class TypeWithDefault(type):
@@ -59,7 +58,9 @@ class Configuration(six.with_metaclass(TypeWithDefault, object)):
     def __init__(self):
         """Constructor"""
         # Default Base url
-        self.host = os.environ.get("IDOMOO_HOST") or "https://usa-api.idomoo.com/api/v2"
+        self.host = None
+
+        self.region = os.environ.get("IDOMOO_API_REGION") or "USA"
         # Temp file folder for downloading files
         self.temp_folder_path = None
 
@@ -156,6 +157,19 @@ class Configuration(six.with_metaclass(TypeWithDefault, object)):
                     logger.removeHandler(self.logger_file_handler)
 
     @property
+    def region(self):
+        """
+        """
+        return self.__region
+
+    @region.setter
+    def region(self, value):
+        self.__region = value.lower()
+        if self.__region not in _endpoint_map:
+            raise ValueError("Allowed Regions are: usa and eur")
+        self.host = _endpoint_map[self.__region]
+
+    @property
     def debug(self):
         """Debug status
 
@@ -185,13 +199,6 @@ class Configuration(six.with_metaclass(TypeWithDefault, object)):
                 logger.setLevel(logging.WARNING)
             # turn off httplib debug
             httplib.HTTPConnection.debuglevel = 0
-
-    def set_region(self, region):
-        region = region.lower()
-        if region not in _endpoint_map:
-            raise ValueError("Allowed Regions are: usa and eur")
-        self.region = region
-        self.host = _endpoint_map[self.region]
 
     @property
     def logger_format(self):

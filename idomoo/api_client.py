@@ -20,7 +20,7 @@ import re
 import tempfile
 
 # python 2 and python 3 compatibility library
-from sys import platform
+import platform
 
 import six
 from six.moves.urllib.parse import quote
@@ -92,7 +92,7 @@ class ApiClient(object):
         # Set default User-Agent.
         library_details = "python %s" % (
             platform.python_version())
-        self.user_agent = "IdomooSdk/Idomoo-REST-SDK %s (%s)" % (
+        self.user_agent = "idomoo-python-SDK %s (%s)" % (
             __version__, library_details)
 
     def __del__(self):
