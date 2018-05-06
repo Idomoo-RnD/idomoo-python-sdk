@@ -1,10 +1,38 @@
 # Idomoo-Python-SDK
+
+<img src="https://blog.idomoo.com/hs-fs/hub/433650/file-2115299887-png/new_logo_in_PNG.fw.png?t=1518623729465&width=673&name=new_logo_in_PNG.fw.png" alt="drawing" style="width: 200px;"/>
+
+
+Idomoo's API is designed for developers or anyone who’s comfortable creating custom-coded solutions.
+The API is designed using standard HTTP (RESTful) protocols and can be implemented using a variety of programming languages and frameworks.
+This is a python implementation of the above API.
+
 - API version: 2.0
-- Package version: 1.0.0
+- Package version: 0.0.1-beta (This means that both the API and client are subject to changes)
 
-## Requirements.
+You can Read the full API reference [here](https://academy.idomoo.com/support/home). (Please do!)
 
-Python 2.7 and 3.4+
+ - Python 2.7 and 3.4+
+
+ - Idomoo Account and Credits.
+
+Read below on how to get your credentials
+
+## Finding the Account ID and API Secret Key
+If you don't have an idomoo Account, you can create one at [https://pv.idomoo.com](https://pv.idomoo.com)
+
+You can find the Account ID in the Storybuilding Suite by following these steps:
+
+1. Make sure you are logged in to the Storybuilding Suite.
+2. Click your name or account icon at the top right of the interface.
+3. Find the Account ID to the right of your name, in parentheses.
+
+You can find the API Secret Key in the Storybuilding Suite by following these steps:
+
+1. From the top-right account menu (the one showing your registered name), click Settings.
+2. Click the API Keys tab.
+3. Your API Secret Key as available to copy in this page.
+
 
 ## Installation & Usage
 
@@ -16,96 +44,50 @@ pip install git+https://github.com/Idomoo-RnD/idomoo-python-sdk.git
 ```
 (you may need to run `pip` with root permission: `sudo pip install git+https://github.com//.git`)
 
-Then import the package:
-```python
-import idomoo 
-```
-
 ## Getting Started
 
+### Creating the client 
+
+#### Using The configuration object
+We allow 2 ways to initiate the basic configuration object
+
+1) Using Env variables:
+
+* IDOMOO_API_REGION - (USA/EUR)
+* IDOMOO_ACCOUNT_ID
+* IDOMOO_API_SECRET_KEY
 
 ```python
-from idomoo import IdomooClient, StoryboardData, StoryboardAPIRequest, helpers
-
-# Create Idomoo PVaaS Client instance
-pv = IdomooClient(region='usa', account_id='ACCOUNT_ID',
-                  api_secret_key='API_SECRET_KEY')
-
-# Define The Desired Output Format
-name = 'My Name'
-bday = '00/00/1991'
-
-# Create a StoryBoard Request Object
-sb_request = StoryboardAPIRequest(storyboard_id='1234')
-sb_request.data.append(StoryboardData(key='name', val=name))
-sb_request.data.append(StoryboardData(key='bday', val=bday))
-sb_request.output = helpers.MP4()
-
-# Generate the Video
-pv.storyboards.generate(sb_request)
+import idomoo
+configuration = idomoo.Configuration()
+client = idomoo.IdomooClient(configuration=configuration)
 ```
 
-
+2) In the code
 ```python
-from idomoo import IdomooClient, Timeline, Scene, Media, TextProperties, SceneAPIRequest, helpers, Text
-
-pv = IdomooClient(region='usa', account_id='ACCOUNT_ID',
-                  api_secret_key='API_SECRET_KEY')
-timeline = Timeline()
-
-scene = Scene(scene_id=1234)
-
-image = Media(key='image', val='https://mypic.png', alignment_scale='fit')
-scene.media.append(image)
-
-txt_ph = Text(key='text1')
-
-txt_props1 = TextProperties(text='Hello')
-txt_props1.color = "rgb(1,1,255)"
-txt_ph.val.append(txt_props1)
-
-txt_props2 = TextProperties(text='My Name')
-txt_props2.color = "rgb(255,128,56)"
-txt_props2.font_path = 'https://myfonts.com/ariel.ttf'
-txt_ph.val.append(txt_props2)
-scene.text.append(txt_ph)
-
-timeline.scenes.append(scene)
-
-scene_request = SceneAPIRequest(timeline=timeline, output=helpers.MP4())
-pv.scenes.generate(scene_request)
-
+import idomoo
+config = idomoo.Configuration()
+config.api_secret_key = "SECRETE_KEY"
+config.account_id = "ACCOUNT_ID"
+config.region = "USA"
+pv = idomoo.IdomooClient(configuration=config)
 ```
-
-
 ## Documentation for API Endpoints
-
 All URIs are relative to *https://usa-api.idomoo.com/api/v2*
 
-Class | Method | HTTP request | Description
------------- | ------------- | ------------- | -------------
-*AccountApi* | [**get_account**](docs/AccountApi.md#get_account) | **GET** /accounts/ | Get Account Informaion
-*LibraryApi* | [**create_scene_library**](docs/LibraryApi.md#create_scene_library) | **POST** /libraries/ | Create Scene Library
-*LibraryApi* | [**get_scene_libraries**](docs/LibraryApi.md#get_scene_libraries) | **GET** /libraries/ | List Scene Libraries
-*LibraryApi* | [**get_scene_library**](docs/LibraryApi.md#get_scene_library) | **GET** /libraries/{libId} | Return Specific Scene Library
-*LibraryApi* | [**get_scenes_from_library**](docs/LibraryApi.md#get_scenes_from_library) | **GET** /libraries/{libId}/scenes/ | Return Scenes from Library
-*SceneApi* | [**generate_scenes**](docs/SceneApi.md#generate_scenes) | **POST** /scenes/generate/ | Generate Video from Scenes
-*SceneApi* | [**get_scene**](docs/SceneApi.md#get_scene) | **GET** /scenes/{sceneId} | Get Scene by ID
-*SceneApi* | [**get_scenes**](docs/SceneApi.md#get_scenes) | **GET** /scenes/ | List of Scenes
-*SceneApi* | [**replace_scene**](docs/SceneApi.md#replace_scene) | **PUT** /scenes/{sceneId} | Replace Scene
-*SceneApi* | [**upload_scene**](docs/SceneApi.md#upload_scene) | **POST** /scenes/ | Upload New Scene
-*StoryboardApi* | [**generate_storyboard**](docs/StoryboardApi.md#generate_storyboard) | **POST** /storyboards/generate/ | Generate Video From Storyboard
-*StoryboardApi* | [**get_storyboard**](docs/StoryboardApi.md#get_storyboard) | **GET** /storyboards/{storyboradId} | Get Storyboard by ID
-*StoryboardApi* | [**get_storyboards**](docs/StoryboardApi.md#get_storyboards) | **GET** /storyboards/ | List Of Storyboards
+The API includes two main levels:
 
+[Generate API](docs/GenerateApi.md)
 
-## Documentation For Authorization
+[Metadata API](docs/MetadataApi.md)
 
-
-## Basic authentication
-
+## Security
 - **Type**: HTTP basic authentication
 
+You can read more about the API Authorization mechanism [here](docs/Security.md)
+
+# Troubleshoots and Contributing
+If you have any questions, bug reports, and feature requests, please [open an issue](https://github.com/Idomoo-RnD/idomoo-python-sdk/issues/new) on Github.
 
 ## Author
 

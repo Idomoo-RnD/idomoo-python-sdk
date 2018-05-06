@@ -67,7 +67,8 @@ from idomoo.models.video_output_response_links import VideoOutputResponseLinks
 
 
 class IdomooClient(ApiClient):
-    def __init__(self, host=None, region=None, configuration=None, header_name=None, header_value=None, cookie=None, **kwargs):
+    def __init__(self, host=None, region=None, configuration=None, header_name=None, header_value=None, cookie=None,
+                 **kwargs):
         """
 
         :param host: SCHEME://HOST[":"PORT][BASE PATH]
@@ -75,8 +76,9 @@ class IdomooClient(ApiClient):
         :param header_value:
         :param cookie:
         """
-        super(IdomooClient, self).__init__(host=host, region=region, configuration=configuration, header_name=header_name,
-                                          header_value=header_value, cookie=cookie, **kwargs)
+        super(IdomooClient, self).__init__(host=host, region=region, configuration=configuration,
+                                           header_name=header_name,
+                                           header_value=header_value, cookie=cookie, **kwargs)
         self.accounts = AccountApi(api_client=self)
         self.libraries = LibraryApi(api_client=self)
         self.scenes = SceneApi(api_client=self)
