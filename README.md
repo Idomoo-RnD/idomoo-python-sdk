@@ -79,12 +79,13 @@ The API includes two main levels:
 
 [Generate API](docs/GenerateApi.md)
 
-[Metadata API](docs/MetadataApi.md)
+[Metadata API](old_docs/MetadataApi.md)
 
 ## Security
 - **Type**: HTTP basic authentication
 
 You can read more about the API Authorization mechanism [here](docs/Security.md)
+
 
 # Troubleshoots and Contributing
 If you have any questions, bug reports, and feature requests, please [open an issue](https://github.com/Idomoo-RnD/idomoo-python-sdk/issues/new) on Github.

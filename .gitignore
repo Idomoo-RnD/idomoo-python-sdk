@@ -7,7 +7,7 @@ __pycache__/
 
 .idea
 test
-docs
+old_docs
 test-requirements.txt
 playground.py
 
