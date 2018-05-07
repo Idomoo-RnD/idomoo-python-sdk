@@ -10,15 +10,13 @@ This is a python implementation of the above API.
 - API version: 2.0
 - Package version: 0.0.1-beta (This means that both the API and client are subject to changes)
 
-You can Read the full API reference [here](https://academy.idomoo.com/support/home). (Please do!)
-
+You can read the full API reference [here](https://academy.idomoo.com/support/home). (Please do!)
+## Requirments
  - Python 2.7 and 3.4+
 
  - Idomoo Account and Credits.
 
-Read below on how to get your credentials
-
-## Finding the Account ID and API Secret Key
+### Finding the Account ID and API Secret Key
 If you don't have an idomoo Account, you can create one at [https://pv.idomoo.com](https://pv.idomoo.com)
 
 You can find the Account ID in the Storybuilding Suite by following these steps:
@@ -79,12 +77,13 @@ The API includes two main levels:
 
 [Generate API](docs/GenerateApi.md)
 
-[Metadata API](docs/MetadataApi.md)
+[Metadata API](old_docs/MetadataApi.md)
 
 ## Security
 - **Type**: HTTP basic authentication
 
 You can read more about the API Authorization mechanism [here](docs/Security.md)
+
 
 # Troubleshoots and Contributing
 If you have any questions, bug reports, and feature requests, please [open an issue](https://github.com/Idomoo-RnD/idomoo-python-sdk/issues/new) on Github.
