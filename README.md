@@ -77,7 +77,7 @@ The API includes two main levels:
 
 [Generate API](docs/GenerateApi.md)
 
-[Metadata API](old_docs/MetadataApi.md)
+[Metadata API](docs/MetadataApi.md)
 
 ## Security
 - **Type**: HTTP basic authentication
