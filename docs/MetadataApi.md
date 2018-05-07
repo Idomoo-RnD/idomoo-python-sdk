@@ -3,7 +3,7 @@
 ## Account
 |Function |Operation | Description|
 |---|---|---|
-| [get_account()](#Get Account) | GET /accounts/	|Get Account Information|
+| [get_account()](#Get-Account) | GET /accounts/	|Get Account Information|
 
 #### Get Account
 ```python
@@ -25,10 +25,10 @@ except idomoo.ApiException as e:
 
 |Function |Operation | Description|
 |---|---|---|
-| [get_scene()](#Get Scene) | GET /scenes/{sceneId} | Get Scene by ID|
-| [get_scenes()](#Get Scenes) | GET /scenes/ |	List of Scenes|
-| [upload_scene()](#Upload Scene) | PUT /scenes/{sceneId} | Replace Scene |
-| [replace_scene()](#Replace Scene)| POST /scenes/ |	Upload New Scene|
+| [get_scene()](#Get-Scene) | GET /scenes/{sceneId} | Get Scene by ID|
+| [get_scenes()](#Get-Scenes) | GET /scenes/ |	List of Scenes|
+| [upload_scene()](#Upload-Scene) | PUT /scenes/{sceneId} | Replace Scene |
+| [replace_scene()](#Replace-Scene)| POST /scenes/ |	Upload New Scene|
 
 #### Get Scene
 ```python
@@ -90,10 +90,10 @@ except idomoo.ApiException as e:
 ## Libraries
 |Function |Operation | Description|
 |---|---|---|
-| [create_scene_library()](#Create Library) |POST /libraries/	|Create Scene Library|
-| [get_scene_library()](#Get Library) |GET /libraries/{libId}	|Return Specific Scene Library|
-| [get_scene_libraries()](#Get Libraries) |GET /libraries/	|List Scene Libraries|
-| [get_scenes_from_library()](#Get Scenes From Library) |GET /libraries/{libId}/scenes/	|Return Scenes from Library|
+| [create_scene_library()](#Create-Library) |POST /libraries/	|Create Scene Library|
+| [get_scene_library()](#Get-Library) |GET /libraries/{libId}	|Return Specific Scene Library|
+| [get_scene_libraries()](#Get-Libraries) |GET /libraries/	|List Scene Libraries|
+| [get_scenes_from_library()](#Get-Scenes-From-Library) |GET /libraries/{libId}/scenes/	|Return Scenes from Library|
 
 #### Create Library
 
@@ -160,8 +160,8 @@ except idomoo.ApiException as e:
 ## Storyboard
 |Function |Operation | Description|
 |---|---|---|
-| [get_storyboard()](#Get Storyboard) | GET /storyboards/{storyboradId} | Get Storyboard by ID|
-| [get_storyboards()](#Get Storyboards) | GET /storyboards/ | List Of Storyboards|
+| [get_storyboard()](#Get-Storyboard) | GET /storyboards/{storyboradId} | Get Storyboard by ID|
+| [get_storyboards()](#Get-Storyboards) | GET /storyboards/ | List Of Storyboards|
  
  #### Get Storyboard
 ```python
