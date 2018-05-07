@@ -10,7 +10,7 @@ This is a python implementation of the above API.
 - API version: 2.0
 - Package version: 0.0.1-beta (This means that both the API and client are subject to changes)
 
-You can Read the full API reference [here](https://academy.idomoo.com/support/home). (Please do!)
+You can read the full API reference [here](https://academy.idomoo.com/support/home). (Please do!)
 ## Requirments
  - Python 2.7 and 3.4+
 

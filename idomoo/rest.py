@@ -3,8 +3,6 @@
 """
     Idomoo API
 
-
-
     OpenAPI spec version: 2.0
     Contact: dev.support@idomoo.com
 
@@ -27,7 +25,7 @@ from six.moves.urllib.parse import urlencode
 try:
     import urllib3
 except ImportError:
-    raise ImportError('Swagger python client requires urllib3.')
+    raise ImportError('Idomoo python client requires urllib3.')
 
 
 logger = logging.getLogger(__name__)

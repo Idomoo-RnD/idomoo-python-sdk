@@ -64,6 +64,7 @@ from idomoo.models.upload_scene import UploadScene
 from idomoo.models.video_output import VideoOutput
 from idomoo.models.video_output_response import VideoOutputResponse
 from idomoo.models.video_output_response_links import VideoOutputResponseLinks
+from idomoo.rest import ApiException
 
 
 class IdomooClient(ApiClient):
