@@ -1,7 +1,9 @@
 
 # Idomoo-Python-SDK
 
-<img src="https://blog.idomoo.com/hs-fs/hub/433650/file-2115299887-png/new_logo_in_PNG.fw.png?t=1518623729465&width=673&name=new_logo_in_PNG.fw.png" alt="drawing" style="width: 200px;"/>
+<p><img src="https://s3.amazonaws.com/cdn.freshdesk.com/data/helpdesk/attachments/production/4052681764/original/SPp1y8hUo2QDdFoYjEud7egQJv1Vu0B_Yg.png" align="center"></p>
+
+
 
 
 Idomoo's API is designed for developers or anyone who’s comfortable creating custom-coded solutions.
@@ -91,3 +93,4 @@ If you have any questions, bug reports, and feature requests, please [open an is
 ## Author
 
 dev.support@idomoo.com
+
