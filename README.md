@@ -1,9 +1,7 @@
 
 # Idomoo-Python-SDK
 
-<p><img src="https://s3.amazonaws.com/cdn.freshdesk.com/data/helpdesk/attachments/production/4052681764/original/SPp1y8hUo2QDdFoYjEud7egQJv1Vu0B_Yg.png" align="center"></p>
-
-
+<p><align="center" img src="https://s3.amazonaws.com/cdn.freshdesk.com/data/helpdesk/attachments/production/4052681764/original/SPp1y8hUo2QDdFoYjEud7egQJv1Vu0B_Yg.png"></p>
 
 
 Idomoo's API is designed for developers or anyone who’s comfortable creating custom-coded solutions.
