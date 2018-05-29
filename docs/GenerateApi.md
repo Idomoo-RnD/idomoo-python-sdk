@@ -1,5 +1,5 @@
 # Generate API:
-Generate a video by using either a storyboard, pre-made in Storybuilding Suite, or by editing scenes together on-the-fly.
+Generate a video by using either a storyboard, pre-made in [Storybuilding Suite](pv.idomoo.com), or by editing scenes together on-the-fly.
 
 Choosing to create a storyboard using Storybuilding Suite means you only need the data itself. The storyboard already includes the artistic and logical decisions for the video.
 
