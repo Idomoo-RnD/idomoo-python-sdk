@@ -73,11 +73,11 @@ client = idomoo.IdomooClient(configuration=config)
 ## Documentation for API Endpoints
 All URIs are relative to *https://usa-api.idomoo.com/api/v2*
 
-The API includes two main levels:
+The API, and therefor SDK, include two main levels:
 
-[Generate API](docs/GenerateApi.md) - use this API to generate videos.
+[Generate SDK](docs/GenerateSDK.md) - use this SDK to generate videos.
 
-[Metadata API](docs/MetadataApi.md) - user this API to upload scenes, get information about scene and storyboards, and get information about your account.
+[Metadata SDK](docs/MetadataSDK.md) - user this SDK to upload scenes, get information about scene and storyboards, and get information about your account.
 
 ## Security
 - **Type**: HTTP basic authentication
