@@ -1,4 +1,6 @@
-# Metadata API
+# Metadata SDK
+
+Using this SDK you can enquire about scenes, storyboards, and your account. You can also upload scenes, create scene libraries and more.
 
 ## Account
 |Function |Operation | Description|
