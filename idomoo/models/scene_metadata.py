@@ -12,7 +12,6 @@
 
 
 import pprint
-import re
 
 import six
 
@@ -66,7 +65,9 @@ class SceneMetadata(object):
         'idm_format_version': 'idm_format_version'
     }
 
-    def __init__(self, scene_status=None, scene_id=None, scene_name=None, scene_height=None, scene_width=None, duration_in_seconds=None, fps=None, media=None, text=None, audio=None, video=None, thumbnail=None, idm_format_version=None):
+    def __init__(self, scene_status=None, scene_id=None, scene_name=None, scene_height=None, scene_width=None,
+                 duration_in_seconds=None, fps=None, media=None, text=None, audio=None, video=None, thumbnail=None,
+                 idm_format_version=None):
         """SceneMetadata - a model defined in Swagger"""
 
         self._scene_status = None

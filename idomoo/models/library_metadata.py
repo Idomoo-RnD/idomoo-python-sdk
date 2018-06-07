@@ -12,7 +12,6 @@
 
 
 import pprint
-import re
 
 import six
 
@@ -142,7 +141,8 @@ class LibraryMetadata(object):
     def thumbnail(self):
         """Gets the thumbnail of this LibraryMetadata.
 
-        In the Storybuilding Suite user interface the Scene Library is represented by a thumbnail image. This is that image.
+        In the Storybuilding Suite user interface the Scene Library is represented by a thumbnail image. This is that
+        image.
 
         :return: The thumbnail of this LibraryMetadata.
         :rtype: str
@@ -153,7 +153,8 @@ class LibraryMetadata(object):
     def thumbnail(self, thumbnail):
         """Sets the thumbnail of this LibraryMetadata.
 
-        In the Storybuilding Suite user interface the Scene Library is represented by a thumbnail image. This is that image.
+        In the Storybuilding Suite user interface the Scene Library is represented by a thumbnail image. This is that
+        image.
 
         :param thumbnail: The thumbnail of this LibraryMetadata.
         :type: str

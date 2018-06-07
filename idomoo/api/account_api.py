@@ -13,7 +13,6 @@
 
 from __future__ import absolute_import
 
-import re
 
 # python 2 and python 3 compatibility library
 import six
@@ -38,7 +37,7 @@ class AccountApi(object):
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.get_account(async=True)
+        >>> thread = client.get_account(async=True)
         >>> result = thread.get()
 
         :param async bool
@@ -59,7 +58,7 @@ class AccountApi(object):
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.get_account_with_http_info(async=True)
+        >>> thread = client.get_account_with_http_info(async=True)
         >>> result = thread.get()
 
         :param async bool
@@ -69,11 +68,7 @@ class AccountApi(object):
                  returns the request thread.
         """
 
-        all_params = ['fields']
-        all_params.append('async')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params = ['fields', 'async', '_return_http_data_only', '_preload_content', '_request_timeout']
 
         params = locals()
         for key, val in six.iteritems(params['kwargs']):

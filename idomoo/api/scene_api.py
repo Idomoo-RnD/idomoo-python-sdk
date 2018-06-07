@@ -12,8 +12,6 @@
 
 from __future__ import absolute_import
 
-import re
-
 # python 2 and python 3 compatibility library
 import six
 
@@ -32,14 +30,14 @@ class SceneApi(object):
             api_client = ApiClient()
         self.api_client = api_client
 
-    def generate_scenes(self, body, **kwargs):
+    def generate(self, body, **kwargs):
         """Generate Video from Scenes
 
-        A scene is a video segment exported from Adobe After Effects using Idomoo’s Scene Tools. Adding several scenes together in a specific order and populating placeholders with data creates a video. The Scene API let's you do just that. You can also make a video out of a single scene.
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.generate_scenes(body, async=True)
-        >>> result = thread.get()
+        A scene is a video segment exported from Adobe After Effects using Idomoo’s Scene Tools. Adding several
+        scenes together in a specific order and populating placeholders with data creates a video. The Scene API
+        let's you do just that. You can also make a video out of a single scene. This method makes a synchronous HTTP
+        request by default. To make an asynchronous HTTP request, please pass async=True >>> thread = client.generate(
+        body, async=True) >>> result = thread.get()
 
         :param async bool
         :param SceneAPIRequest body: (required)
@@ -49,19 +47,19 @@ class SceneApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async'):
-            return self.generate_scenes_with_http_info(body, **kwargs)
+            return self.generate_with_http_info(body, **kwargs)
         else:
-            (data) = self.generate_scenes_with_http_info(body, **kwargs)
+            (data) = self.generate_with_http_info(body, **kwargs)
             return data
 
-    def generate_scenes_with_http_info(self, body, **kwargs):
+    def generate_with_http_info(self, body, **kwargs):
         """Generate Video from Scenes
 
-        A scene is a video segment exported from Adobe After Effects using Idomoo’s Scene Tools. Adding several scenes together in a specific order and populating placeholders with data creates a video. The Scene API let's you do just that. You can also make a video out of a single scene.
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.generate_scenes_with_http_info(body, async=True)
-        >>> result = thread.get()
+        A scene is a video segment exported from Adobe After Effects using Idomoo’s Scene Tools. Adding several
+        scenes together in a specific order and populating placeholders with data creates a video. The Scene API
+        let's you do just that. You can also make a video out of a single scene. This method makes a synchronous HTTP
+        request by default. To make an asynchronous HTTP request, please pass async=True >>> thread =
+        client.generate_with_http_info(body, async=True) >>> result = thread.get()
 
         :param async bool
         :param SceneAPIRequest body: (required)
@@ -70,11 +68,7 @@ class SceneApi(object):
                  returns the request thread.
         """
 
-        all_params = ['body']
-        all_params.append('async')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params = ['body', 'async', '_return_http_data_only', '_preload_content', '_request_timeout']
 
         params = locals()
         for key, val in six.iteritems(params['kwargs']):
@@ -87,7 +81,7 @@ class SceneApi(object):
         del params['kwargs']
         # verify the required parameter 'body' is set
         if ('body' not in params or
-                    params['body'] is None):
+                params['body'] is None):
             raise ValueError("Missing the required parameter `body` when calling `generate_scenes`")
 
         collection_formats = {}
@@ -112,7 +106,7 @@ class SceneApi(object):
         auth_settings = ['Basic authentication']
 
         return self.api_client.call_api(
-            '/scenes/generate/', 'POST',
+            '/scenes/generate', 'POST',
             path_params,
             query_params,
             header_params,
@@ -133,7 +127,7 @@ class SceneApi(object):
         Get Scene by its scene ID.
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.get_scene(scene_id, async=True)
+        >>> thread = client.get_scene(scene_id, async=True)
         >>> result = thread.get()
 
         :param async bool
@@ -156,7 +150,7 @@ class SceneApi(object):
         Get Scene by its scene ID.
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.get_scene_with_http_info(scene_id, async=True)
+        >>> thread = client.get_scene_with_http_info(scene_id, async=True)
         >>> result = thread.get()
 
         :param async bool
@@ -167,11 +161,7 @@ class SceneApi(object):
                  returns the request thread.
         """
 
-        all_params = ['scene_id', 'fields']
-        all_params.append('async')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params = ['scene_id', 'fields', 'async', '_return_http_data_only', '_preload_content', '_request_timeout']
 
         params = locals()
         for key, val in six.iteritems(params['kwargs']):
@@ -184,7 +174,7 @@ class SceneApi(object):
         del params['kwargs']
         # verify the required parameter 'scene_id' is set
         if ('scene_id' not in params or
-                    params['scene_id'] is None):
+                params['scene_id'] is None):
             raise ValueError("Missing the required parameter `scene_id` when calling `get_scene`")
 
         collection_formats = {}
@@ -237,17 +227,15 @@ class SceneApi(object):
         List of Scenes. You can filter which fields to show, and paginate with limit and offset.
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.get_scenes(async=True)
+        >>> thread = client.get_scenes(async=True)
         >>> result = thread.get()
 
-        :param async bool
-        :param str fields: Choose which fields should return. `GET /scenes?fields=fps,scene_id,scene_width,scene_height` Nested fields are also supported with dot-notation.
-        :param int limit: Set limit on number of results. `GET /scenes?limit=5 `
-        :param int offset: Get a different set of items. You can use the offset and limit parameters in the GET request’s query string  For example, `GET /scenes?offset=5&limit=5 ` returns scenes 6..10.
-        :param bool desc: Allow ascending and descending sorting. `GET /scenes?desc=true`
-        :return: ScenesList
-                 If the method is called asynchronously,
-                 returns the request thread.
+        :param async bool :param str fields: Choose which fields should return. `GET /scenes?fields=fps,scene_id,
+        scene_width,scene_height` Nested fields are also supported with dot-notation. :param int limit: Set limit on
+        number of results. `GET /scenes?limit=5 ` :param int offset: Get a different set of items. You can use the
+        offset and limit parameters in the GET request’s query string  For example, `GET /scenes?offset=5&limit=5 `
+        returns scenes 6..10. :param bool desc: Allow ascending and descending sorting. `GET /scenes?desc=true`
+        :return: ScenesList If the method is called asynchronously, returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async'):
@@ -262,24 +250,19 @@ class SceneApi(object):
         List of Scenes. You can filter which fields to show, and paginate with limit and offset.
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.get_scenes_with_http_info(async=True)
+        >>> thread = client.get_scenes_with_http_info(async=True)
         >>> result = thread.get()
 
-        :param async bool
-        :param str fields: Choose which fields should return. `GET /scenes?fields=fps,scene_id,scene_width,scene_height` Nested fields are also supported with dot-notation.
-        :param int limit: Set limit on number of results. `GET /scenes?limit=5 `
-        :param int offset: Get a different set of items. You can use the offset and limit parameters in the GET request’s query string  For example, `GET /scenes?offset=5&limit=5 ` returns scenes 6..10.
-        :param bool desc: Allow ascending and descending sorting. `GET /scenes?desc=true`
-        :return: ScenesList
-                 If the method is called asynchronously,
-                 returns the request thread.
+        :param async bool :param str fields: Choose which fields should return. `GET /scenes?fields=fps,scene_id,
+        scene_width,scene_height` Nested fields are also supported with dot-notation. :param int limit: Set limit on
+        number of results. `GET /scenes?limit=5 ` :param int offset: Get a different set of items. You can use the
+        offset and limit parameters in the GET request’s query string  For example, `GET /scenes?offset=5&limit=5 `
+        returns scenes 6..10. :param bool desc: Allow ascending and descending sorting. `GET /scenes?desc=true`
+        :return: ScenesList If the method is called asynchronously, returns the request thread.
         """
 
-        all_params = ['fields', 'limit', 'offset', 'desc']
-        all_params.append('async')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params = ['fields', 'limit', 'offset', 'desc', 'async', '_return_http_data_only', '_preload_content',
+                      '_request_timeout']
 
         params = locals()
         for key, val in six.iteritems(params['kwargs']):
@@ -341,11 +324,10 @@ class SceneApi(object):
     def replace_scene(self, scene_id, idmfile, **kwargs):
         """Replace Scene
 
-        Replace a scene with a new IDM file. The new and old scenes have to have several same features: 1. At least the same placeholders, but can have more. 2. Same frame rate (FPS). 3. Same resolution aspect ratio (width/height).
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.replace_scene(scene_id, async=True)
-        >>> result = thread.get()
+        Replace a scene with a new IDM file. The new and old scenes have to have several same features: 1. At least
+        the same placeholders, but can have more. 2. Same frame rate (FPS). 3. Same resolution aspect ratio (
+        width/height). This method makes a synchronous HTTP request by default. To make an asynchronous HTTP request,
+        please pass async=True >>> thread = client.replace_scene(scene_id, async=True) >>> result = thread.get()
 
         :param async bool
         :param str scene_id: (required)
@@ -364,11 +346,11 @@ class SceneApi(object):
     def replace_scene_with_http_info(self, scene_id, idmfile, **kwargs):
         """Replace Scene
 
-        Replace a scene with a new IDM file. The new and old scenes have to have several same features: 1. At least the same placeholders, but can have more. 2. Same frame rate (FPS). 3. Same resolution aspect ratio (width/height).
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.replace_scene_with_http_info(scene_id, async=True)
-        >>> result = thread.get()
+        Replace a scene with a new IDM file. The new and old scenes have to have several same features: 1. At least
+        the same placeholders, but can have more. 2. Same frame rate (FPS). 3. Same resolution aspect ratio (
+        width/height). This method makes a synchronous HTTP request by default. To make an asynchronous HTTP request,
+        please pass async=True >>> thread = client.replace_scene_with_http_info(scene_id, async=True) >>> result =
+        thread.get()
 
         :param async bool
         :param str scene_id: (required)
@@ -378,11 +360,7 @@ class SceneApi(object):
                  returns the request thread.
         """
 
-        all_params = ['scene_id', 'idmfile']
-        all_params.append('async')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params = ['scene_id', 'idmfile', 'async', '_return_http_data_only', '_preload_content', '_request_timeout']
 
         params = locals()
         for key, val in six.iteritems(params['kwargs']):
@@ -395,10 +373,10 @@ class SceneApi(object):
         del params['kwargs']
         # verify the required parameter 'scene_id' is set
         if ('scene_id' not in params or
-                    params['scene_id'] is None):
+                params['scene_id'] is None):
             raise ValueError("Missing the required parameter `scene_id` when calling `replace_scene`")
         if ('idmfile' not in params or
-                    params['idmfile'] is None):
+                params['idmfile'] is None):
             raise ValueError("Missing the required parameter `idmfile` when calling `replace_scene`")
 
         collection_formats = {}
@@ -448,7 +426,7 @@ class SceneApi(object):
         Upload a new scene into a Scene Library. You will need the IDM file to upload.
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.upload_scene(library, idmfile, async=True)
+        >>> thread = client.upload_scene(library, idmfile, async=True)
         >>> result = thread.get()
 
         :param async bool
@@ -472,7 +450,7 @@ class SceneApi(object):
         Upload a new scene into a Scene Library. You will need the IDM file to upload.
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.upload_scene_with_http_info(library, async=True)
+        >>> thread = client.upload_scene_with_http_info(library, async=True)
         >>> result = thread.get()
 
         :param async bool
@@ -484,11 +462,7 @@ class SceneApi(object):
                  returns the request thread.
         """
 
-        all_params = ['library', 'idmfile']
-        all_params.append('async')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params = ['library', 'idmfile', 'async', '_return_http_data_only', '_preload_content', '_request_timeout']
 
         params = locals()
         for key, val in six.iteritems(params['kwargs']):
@@ -501,11 +475,11 @@ class SceneApi(object):
         del params['kwargs']
         # verify the required parameter 'library' is set
         if ('library' not in params or
-                    params['library'] is None):
+                params['library'] is None):
             raise ValueError("Missing the required parameter `library` when calling `upload_scene`")
 
         if ('idmfile' not in params or
-                    params['idmfile'] is None):
+                params['idmfile'] is None):
             raise ValueError("Missing the required parameter `idmfile` when calling `upload_scene`")
 
         collection_formats = {}

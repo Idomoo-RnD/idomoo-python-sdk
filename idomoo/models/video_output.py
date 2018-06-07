@@ -12,7 +12,6 @@
 
 
 import pprint
-import re
 
 import six
 
@@ -54,7 +53,8 @@ class VideoOutput(object):
         'label': 'label'
     }
 
-    def __init__(self, video_type=None, quality=None, height=None, suffix=None, overlay=None, overlay_alignment=None, overlay_scale='fit', landing_page_id=None, label=None):
+    def __init__(self, video_type=None, quality=None, height=None, suffix=None, overlay=None, overlay_alignment=None,
+                 overlay_scale='fit', landing_page_id=None, label=None):
         """VideoOutput - a model defined in Swagger"""
 
         self._video_type = None
@@ -120,7 +120,8 @@ class VideoOutput(object):
     def quality(self):
         """Gets the quality of this VideoOutput.
 
-        Quality of x264. The lower the number, the higher the quality and file size. Numbers between 21 - 29 should be more than enough for most uses.
+        Quality of x264. The lower the number, the higher the quality and file size. Numbers between 21 - 29 should
+        be more than enough for most uses.
 
         :return: The quality of this VideoOutput.
         :rtype: int
@@ -131,7 +132,8 @@ class VideoOutput(object):
     def quality(self, quality):
         """Sets the quality of this VideoOutput.
 
-        Quality of x264. The lower the number, the higher the quality and file size. Numbers between 21 - 29 should be more than enough for most uses.
+        Quality of x264. The lower the number, the higher the quality and file size. Numbers between 21 - 29 should
+        be more than enough for most uses.
 
         :param quality: The quality of this VideoOutput.
         :type: int
@@ -147,7 +149,9 @@ class VideoOutput(object):
     def height(self):
         """Gets the height of this VideoOutput.
 
-        Height of the media to be rendered, in pixels. Should be the height of your scenes unless a smaller resolution is needed. Resolution higher than the scene resolution reduces quality. The width is automatically calculated to keep the aspect ratio.
+        Height of the media to be rendered, in pixels. Should be the height of your scenes unless a smaller
+        resolution is needed. Resolution higher than the scene resolution reduces quality. The width is automatically
+        calculated to keep the aspect ratio.
 
         :return: The height of this VideoOutput.
         :rtype: int
@@ -158,7 +162,9 @@ class VideoOutput(object):
     def height(self, height):
         """Sets the height of this VideoOutput.
 
-        Height of the media to be rendered, in pixels. Should be the height of your scenes unless a smaller resolution is needed. Resolution higher than the scene resolution reduces quality. The width is automatically calculated to keep the aspect ratio.
+        Height of the media to be rendered, in pixels. Should be the height of your scenes unless a smaller
+        resolution is needed. Resolution higher than the scene resolution reduces quality. The width is automatically
+        calculated to keep the aspect ratio.
 
         :param height: The height of this VideoOutput.
         :type: int
@@ -172,7 +178,8 @@ class VideoOutput(object):
     def suffix(self):
         """Gets the suffix of this VideoOutput.
 
-        Unique ending of the file name so several outputs can be created then identified. Required if there is more then 1 video output.
+        Unique ending of the file name so several outputs can be created then identified. Required if there is more
+        then 1 video output.
 
         :return: The suffix of this VideoOutput.
         :rtype: str
@@ -183,7 +190,8 @@ class VideoOutput(object):
     def suffix(self, suffix):
         """Sets the suffix of this VideoOutput.
 
-        Unique ending of the file name so several outputs can be created then identified. Required if there is more then 1 video output.
+        Unique ending of the file name so several outputs can be created then identified. Required if there is more
+        then 1 video output.
 
         :param suffix: The suffix of this VideoOutput.
         :type: str
@@ -218,7 +226,8 @@ class VideoOutput(object):
     def overlay_alignment(self):
         """Gets the overlay_alignment of this VideoOutput.
 
-        Alignment for overlay image in case the image doesn't fit the video perfectly. The first item in the array is X. The second is Y.
+        Alignment for overlay image in case the image doesn't fit the video perfectly. The first item in the array is
+        X. The second is Y.
 
         :return: The overlay_alignment of this VideoOutput.
         :rtype: list[str]
@@ -229,7 +238,8 @@ class VideoOutput(object):
     def overlay_alignment(self, overlay_alignment):
         """Sets the overlay_alignment of this VideoOutput.
 
-        Alignment for overlay image in case the image doesn't fit the video perfectly. The first item in the array is X. The second is Y.
+        Alignment for overlay image in case the image doesn't fit the video perfectly. The first item in the array is
+        X. The second is Y.
 
         :param overlay_alignment: The overlay_alignment of this VideoOutput.
         :type: list[str]
@@ -248,7 +258,11 @@ class VideoOutput(object):
     def overlay_scale(self):
         """Gets the overlay_scale of this VideoOutput.
 
-        Scale the overlay image if it's not the same size as the video. * Fit: scale the image up or down so it's completely visible in the video's resolution. If not the same aspect ratio, transparency is added around the image according to the alignment settings. * Fill: scale the image up or down so it completely fills the video. If not the same aspect ratio, the image is cropped according to the alignment settings.  * None: don't resize the overlay image.
+        Scale the overlay image if it's not the same size as the video. * Fit: scale the image up or down so it's
+        completely visible in the video's resolution. If not the same aspect ratio, transparency is added around the
+        image according to the alignment settings. * Fill: scale the image up or down so it completely fills the
+        video. If not the same aspect ratio, the image is cropped according to the alignment settings.  * None: don't
+        resize the overlay image.
 
         :return: The overlay_scale of this VideoOutput.
         :rtype: str
@@ -259,7 +273,11 @@ class VideoOutput(object):
     def overlay_scale(self, overlay_scale):
         """Sets the overlay_scale of this VideoOutput.
 
-        Scale the overlay image if it's not the same size as the video. * Fit: scale the image up or down so it's completely visible in the video's resolution. If not the same aspect ratio, transparency is added around the image according to the alignment settings. * Fill: scale the image up or down so it completely fills the video. If not the same aspect ratio, the image is cropped according to the alignment settings.  * None: don't resize the overlay image.
+        Scale the overlay image if it's not the same size as the video. * Fit: scale the image up or down so it's
+        completely visible in the video's resolution. If not the same aspect ratio, transparency is added around the
+        image according to the alignment settings. * Fill: scale the image up or down so it completely fills the
+        video. If not the same aspect ratio, the image is cropped according to the alignment settings.  * None: don't
+        resize the overlay image.
 
         :param overlay_scale: The overlay_scale of this VideoOutput.
         :type: str
@@ -300,7 +318,8 @@ class VideoOutput(object):
     def label(self):
         """Gets the label of this VideoOutput.
 
-        This label is another way to identify this specific output. The label is returned in the response, but does not appear in the file name.
+        This label is another way to identify this specific output. The label is returned in the response,
+        but does not appear in the file name.
 
         :return: The label of this VideoOutput.
         :rtype: str
@@ -311,7 +330,8 @@ class VideoOutput(object):
     def label(self, label):
         """Sets the label of this VideoOutput.
 
-        This label is another way to identify this specific output. The label is returned in the response, but does not appear in the file name.
+        This label is another way to identify this specific output. The label is returned in the response,
+        but does not appear in the file name.
 
         :param label: The label of this VideoOutput.
         :type: str

@@ -12,7 +12,6 @@
 
 
 import pprint
-import re
 
 import six
 
@@ -50,7 +49,8 @@ class GenerationResponse(object):
         'check_status_url': 'check_status_url'
     }
 
-    def __init__(self, status=None, output=None, unique_id=None, request_id=None, total_cost=None, check_status_url=None):
+    def __init__(self, status=None, output=None, unique_id=None, request_id=None, total_cost=None,
+                 check_status_url=None):
         """GenerationResponse - a model defined in Swagger"""
 
         self._status = None
@@ -72,7 +72,8 @@ class GenerationResponse(object):
     def status(self):
         """Gets the status of this GenerationResponse.
 
-        Status of the response. Success means all checks past, but render hasn't happened yet. Render should pass successfully as well, except for in extreme cases. More on that under `\"check_status_url\"`.
+        Status of the response. Success means all checks past, but render hasn't happened yet. Render should pass
+        successfully as well, except for in extreme cases. More on that under `\"check_status_url\"`.
 
         :return: The status of this GenerationResponse.
         :rtype: str
@@ -83,7 +84,8 @@ class GenerationResponse(object):
     def status(self, status):
         """Sets the status of this GenerationResponse.
 
-        Status of the response. Success means all checks past, but render hasn't happened yet. Render should pass successfully as well, except for in extreme cases. More on that under `\"check_status_url\"`.
+        Status of the response. Success means all checks past, but render hasn't happened yet. Render should pass
+        successfully as well, except for in extreme cases. More on that under `\"check_status_url\"`.
 
         :param status: The status of this GenerationResponse.
         :type: str
@@ -176,7 +178,8 @@ class GenerationResponse(object):
     def total_cost(self):
         """Gets the total_cost of this GenerationResponse.
 
-        How many credits were used up in this call for all the outputs generated. A credit is up to 30 seconds of rendered video.
+        How many credits were used up in this call for all the outputs generated. A credit is up to 30 seconds of
+        rendered video.
 
         :return: The total_cost of this GenerationResponse.
         :rtype: int
@@ -187,7 +190,8 @@ class GenerationResponse(object):
     def total_cost(self, total_cost):
         """Sets the total_cost of this GenerationResponse.
 
-        How many credits were used up in this call for all the outputs generated. A credit is up to 30 seconds of rendered video.
+        How many credits were used up in this call for all the outputs generated. A credit is up to 30 seconds of
+        rendered video.
 
         :param total_cost: The total_cost of this GenerationResponse.
         :type: int
@@ -201,7 +205,9 @@ class GenerationResponse(object):
     def check_status_url(self):
         """Gets the check_status_url of this GenerationResponse.
 
-        As Idomoo's API is asynchronous, when you get a successful response it only means the API call was checked, passed, and added to the render queue. To check if the video is rendered, check this URL's status. More about this [here](https://academy.idomoo.com/support/solutions/articles/4000110613).
+        As Idomoo's API is asynchronous, when you get a successful response it only means the API call was checked,
+        passed, and added to the render queue. To check if the video is rendered, check this URL's status. More about
+        this [here](https://academy.idomoo.com/support/solutions/articles/4000110613).
 
         :return: The check_status_url of this GenerationResponse.
         :rtype: str
@@ -212,7 +218,9 @@ class GenerationResponse(object):
     def check_status_url(self, check_status_url):
         """Sets the check_status_url of this GenerationResponse.
 
-        As Idomoo's API is asynchronous, when you get a successful response it only means the API call was checked, passed, and added to the render queue. To check if the video is rendered, check this URL's status. More about this [here](https://academy.idomoo.com/support/solutions/articles/4000110613).
+        As Idomoo's API is asynchronous, when you get a successful response it only means the API call was checked,
+        passed, and added to the render queue. To check if the video is rendered, check this URL's status. More about
+        this [here](https://academy.idomoo.com/support/solutions/articles/4000110613).
 
         :param check_status_url: The check_status_url of this GenerationResponse.
         :type: str

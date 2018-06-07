@@ -16,6 +16,7 @@ import re
 
 import six
 
+from idomoo import utils
 from idomoo.models.output import Output
 from idomoo.models.storyboard_data import StoryboardData
 
@@ -51,7 +52,8 @@ class StoryboardAPIRequest(object):
         'data': 'data'
     }
 
-    def __init__(self, storyboard_id=None, statistic_id=None, video_file_name=None, output=None, storage=None, data=None):
+    def __init__(self, storyboard_id=None, statistic_id=None, video_file_name=None, output=None, storage=None,
+                 data=None):
         """StoryboardAPIRequest - a model defined in Swagger"""
 
         self._storyboard_id = None
@@ -124,7 +126,8 @@ class StoryboardAPIRequest(object):
     def video_file_name(self):
         """Gets the video_file_name of this StoryboardAPIRequest.
 
-        The unique file name for all output types. After the file name, the suffix is added after an underscore. Only the following characters are allowed: a-z A-Z 0-9 _
+        The unique file name for all output types. After the file name, the suffix is added after an underscore. Only
+        the following characters are allowed: a-z A-Z 0-9 _
 
         :return: The video_file_name of this StoryboardAPIRequest.
         :rtype: str
@@ -135,13 +138,15 @@ class StoryboardAPIRequest(object):
     def video_file_name(self, video_file_name):
         """Sets the video_file_name of this StoryboardAPIRequest.
 
-        The unique file name for all output types. After the file name, the suffix is added after an underscore. Only the following characters are allowed: a-z A-Z 0-9 _
+        The unique file name for all output types. After the file name, the suffix is added after an underscore. Only
+        the following characters are allowed: a-z A-Z 0-9 _
 
         :param video_file_name: The video_file_name of this StoryboardAPIRequest.
         :type: str
         """
-        if video_file_name is not None and not re.search('^[A-Za-z0-9_]+$', video_file_name):
-            raise ValueError("Invalid value for `video_file_name`, must be a follow pattern or equal to `/^[A-Za-z0-9_]+$/`")
+        if video_file_name is not None and not re.search(utils.VALID_VIDEO_NAME_REGEX, video_file_name):
+            raise ValueError("Invalid value for `video_file_name`, must be a follow pattern or equal to `%s`"
+                             % utils.VALID_VIDEO_NAME_REGEX)
 
         self._video_file_name = video_file_name
 
@@ -172,7 +177,9 @@ class StoryboardAPIRequest(object):
     def storage(self):
         """Gets the storage of this StoryboardAPIRequest.
 
-        By default all videos are saved on Idomoo servers. For clients working with professional services, storage can be defined so that videos are stored on another storage. Please contact support or your project manager to define storage.
+        By default all videos are saved on Idomoo servers. For clients working with professional services,
+        storage can be defined so that videos are stored on another storage. Please contact support or your project
+        manager to define storage.
 
         :return: The storage of this StoryboardAPIRequest.
         :rtype: list[int]
@@ -183,7 +190,9 @@ class StoryboardAPIRequest(object):
     def storage(self, storage):
         """Sets the storage of this StoryboardAPIRequest.
 
-        By default all videos are saved on Idomoo servers. For clients working with professional services, storage can be defined so that videos are stored on another storage. Please contact support or your project manager to define storage.
+        By default all videos are saved on Idomoo servers. For clients working with professional services,
+        storage can be defined so that videos are stored on another storage. Please contact support or your project
+        manager to define storage.
 
         :param storage: The storage of this StoryboardAPIRequest.
         :type: list[int]

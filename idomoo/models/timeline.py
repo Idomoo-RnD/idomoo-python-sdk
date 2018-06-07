@@ -10,9 +10,7 @@
 
 """
 
-
 import pprint
-import re
 
 import six
 
@@ -63,7 +61,8 @@ class Timeline(object):
     def scene_order(self):
         """Gets the scene_order of this Timeline.
 
-        How to order the scene on the timeline: * Linear scene ordering simply places the scenes in the order you specify, one after the other. * Non-linear scene ordering leaves the start timing of each scene up to you.
+        How to order the scene on the timeline: * Linear scene ordering simply places the scenes in the order you
+        specify, one after the other. * Non-linear scene ordering leaves the start timing of each scene up to you.
 
         :return: The scene_order of this Timeline.
         :rtype: str
@@ -74,7 +73,8 @@ class Timeline(object):
     def scene_order(self, scene_order):
         """Sets the scene_order of this Timeline.
 
-        How to order the scene on the timeline: * Linear scene ordering simply places the scenes in the order you specify, one after the other. * Non-linear scene ordering leaves the start timing of each scene up to you.
+        How to order the scene on the timeline: * Linear scene ordering simply places the scenes in the order you
+        specify, one after the other. * Non-linear scene ordering leaves the start timing of each scene up to you.
 
         :param scene_order: The scene_order of this Timeline.
         :type: str
@@ -83,7 +83,7 @@ class Timeline(object):
         if scene_order not in allowed_values:
             raise ValueError(
                 "Invalid value for `scene_order` ({0}), must be one of {1}"
-                .format(scene_order, allowed_values)
+                    .format(scene_order, allowed_values)
             )
 
         self._scene_order = scene_order
@@ -113,7 +113,8 @@ class Timeline(object):
     def scenes(self):
         """Gets the scenes of this Timeline.
 
-        Array of scenes to render. The order matters if Scene Order is set to linear. Otherwise, there is no significance to order.
+        Array of scenes to render. The order matters if Scene Order is set to linear. Otherwise, there is no
+        significance to order.
 
         :return: The scenes of this Timeline.
         :rtype: list[Scene]
@@ -124,13 +125,14 @@ class Timeline(object):
     def scenes(self, scenes):
         """Sets the scenes of this Timeline.
 
-        Array of scenes to render. The order matters if Scene Order is set to linear. Otherwise, there is no significance to order.
+        Array of scenes to render. The order matters if Scene Order is set to linear. Otherwise, there is no
+        significance to order.
 
         :param scenes: The scenes of this Timeline.
         :type: list[Scene]
         """
         if scenes is None:
-            raise ValueError("Invalid value for `scenes`, must not be `None`")
+            scenes = list()
 
         self._scenes = scenes
 
