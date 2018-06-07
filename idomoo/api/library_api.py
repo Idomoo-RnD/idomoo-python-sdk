@@ -13,8 +13,6 @@
 
 from __future__ import absolute_import
 
-import re
-
 # python 2 and python 3 compatibility library
 import six
 
@@ -39,7 +37,7 @@ class LibraryApi(object):
         Use this function to create a new Scene Library.
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.create_scene_library(body, async=True)
+        >>> thread = client.create_scene_library(body, async=True)
         >>> result = thread.get()
 
         :param async bool
@@ -61,7 +59,7 @@ class LibraryApi(object):
         Use this function to create a new Scene Library.
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.create_scene_library_with_http_info(body, async=True)
+        >>> thread = client.create_scene_library_with_http_info(body, async=True)
         >>> result = thread.get()
 
         :param async bool
@@ -71,11 +69,7 @@ class LibraryApi(object):
                  returns the request thread.
         """
 
-        all_params = ['body']
-        all_params.append('async')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params = ['body', 'async', '_return_http_data_only', '_preload_content', '_request_timeout']
 
         params = locals()
         for key, val in six.iteritems(params['kwargs']):
@@ -134,7 +128,7 @@ class LibraryApi(object):
         This function lists all scene libraries available to the authenticated user.
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.get_scene_libraries(async=True)
+        >>> thread = client.get_scene_libraries(async=True)
         >>> result = thread.get()
 
         :param async bool
@@ -159,7 +153,7 @@ class LibraryApi(object):
         This function lists all scene libraries available to the authenticated user.
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.get_scene_libraries_with_http_info(async=True)
+        >>> thread = client.get_scene_libraries_with_http_info(async=True)
         >>> result = thread.get()
 
         :param async bool
@@ -172,11 +166,8 @@ class LibraryApi(object):
                  returns the request thread.
         """
 
-        all_params = ['fields', 'desc', 'limit', 'offset']
-        all_params.append('async')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params = ['fields', 'desc', 'limit', 'offset', 'async', '_return_http_data_only', '_preload_content',
+                      '_request_timeout']
 
         params = locals()
         for key, val in six.iteritems(params['kwargs']):
@@ -241,7 +232,7 @@ class LibraryApi(object):
         Return Specific Scene Library by specifying its library ID.
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.get_scene_library(lib_id, async=True)
+        >>> thread = client.get_scene_library(lib_id, async=True)
         >>> result = thread.get()
 
         :param async bool
@@ -264,7 +255,7 @@ class LibraryApi(object):
         Return Specific Scene Library by specifying its library ID.
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.get_scene_library_with_http_info(lib_id, async=True)
+        >>> thread = client.get_scene_library_with_http_info(lib_id, async=True)
         >>> result = thread.get()
 
         :param async bool
@@ -275,11 +266,7 @@ class LibraryApi(object):
                  returns the request thread.
         """
 
-        all_params = ['lib_id', 'fields']
-        all_params.append('async')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params = ['lib_id', 'fields', 'async', '_return_http_data_only', '_preload_content', '_request_timeout']
 
         params = locals()
         for key, val in six.iteritems(params['kwargs']):
@@ -344,7 +331,7 @@ class LibraryApi(object):
         Return an array of all the Scenes and their metadata held in a specific Scene Library.
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.get_scenes_from_library(lib_id, async=True)
+        >>> thread = client.get_scenes_from_library(lib_id, async=True)
         >>> result = thread.get()
 
         :param async bool
@@ -367,7 +354,7 @@ class LibraryApi(object):
         Return an array of all the Scenes and their metadata held in a specific Scene Library.
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.get_scenes_from_library_with_http_info(lib_id, async=True)
+        >>> thread = client.get_scenes_from_library_with_http_info(lib_id, async=True)
         >>> result = thread.get()
 
         :param async bool
@@ -378,11 +365,7 @@ class LibraryApi(object):
                  returns the request thread.
         """
 
-        all_params = ['lib_id', 'fields']
-        all_params.append('async')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params = ['lib_id', 'fields', 'async', '_return_http_data_only', '_preload_content', '_request_timeout']
 
         params = locals()
         for key, val in six.iteritems(params['kwargs']):

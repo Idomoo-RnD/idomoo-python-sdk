@@ -13,8 +13,6 @@
 
 from __future__ import absolute_import
 
-import re
-
 # python 2 and python 3 compatibility library
 import six
 
@@ -33,14 +31,13 @@ class StoryboardApi(object):
             api_client = ApiClient()
         self.api_client = api_client
 
-    def generate_storyboard(self, body, **kwargs):
+    def generate(self, body, **kwargs):
         """Generate Video From Storyboard
 
-        A dynamic storyboard, created in [Storybuilding Suite](http://pv.idomoo.com) already holds all the scene logic and placeholder formatting. Only thing left to do to generate a video is define what output you want, and fill in the data itself.
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.generate_storyboard(body, async=True)
-        >>> result = thread.get()
+        A dynamic storyboard, created in [Storybuilding Suite](http://pv.idomoo.com) already holds all the scene
+        logic and placeholder formatting. Only thing left to do to generate a video is define what output you want,
+        and fill in the data itself. This method makes a synchronous HTTP request by default. To make an asynchronous
+        HTTP request, please pass async=True >>> thread = client.generate(body, async=True) >>> result = thread.get()
 
         :param async bool
         :param StoryboardAPIRequest body: (required)
@@ -50,19 +47,19 @@ class StoryboardApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async'):
-            return self.generate_storyboard_with_http_info(body, **kwargs)
+            return self.generate_with_http_info(body, **kwargs)
         else:
-            (data) = self.generate_storyboard_with_http_info(body, **kwargs)
+            (data) = self.generate_with_http_info(body, **kwargs)
             return data
 
-    def generate_storyboard_with_http_info(self, body, **kwargs):
+    def generate_with_http_info(self, body, **kwargs):
         """Generate Video From Storyboard
 
-        A dynamic storyboard, created in [Storybuilding Suite](http://pv.idomoo.com) already holds all the scene logic and placeholder formatting. Only thing left to do to generate a video is define what output you want, and fill in the data itself.
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.generate_storyboard_with_http_info(body, async=True)
-        >>> result = thread.get()
+        A dynamic storyboard, created in [Storybuilding Suite](http://pv.idomoo.com) already holds all the scene
+        logic and placeholder formatting. Only thing left to do to generate a video is define what output you want,
+        and fill in the data itself. This method makes a synchronous HTTP request by default. To make an asynchronous
+        HTTP request, please pass async=True >>> thread = client.generate_with_http_info(body, async=True) >>> result
+        = thread.get()
 
         :param async bool
         :param StoryboardAPIRequest body: (required)
@@ -71,11 +68,7 @@ class StoryboardApi(object):
                  returns the request thread.
         """
 
-        all_params = ['body']
-        all_params.append('async')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params = ['body', 'async', '_return_http_data_only', '_preload_content', '_request_timeout']
 
         params = locals()
         for key, val in six.iteritems(params['kwargs']):
@@ -113,7 +106,7 @@ class StoryboardApi(object):
         auth_settings = ['Basic authentication']
 
         return self.api_client.call_api(
-            '/storyboards/generate/', 'POST',
+            '/storyboards/generate', 'POST',
             path_params,
             query_params,
             header_params,
@@ -134,7 +127,7 @@ class StoryboardApi(object):
         Get Storyboard by ID
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.get_storyboard(storyborad_id, async=True)
+        >>> thread = client.get_storyboard(storyborad_id, async=True)
         >>> result = thread.get()
 
         :param async bool
@@ -157,7 +150,7 @@ class StoryboardApi(object):
         Get Storyboard by ID
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.get_storyboard_with_http_info(storyborad_id, async=True)
+        >>> thread = client.get_storyboard_with_http_info(storyborad_id, async=True)
         >>> result = thread.get()
 
         :param async bool
@@ -168,11 +161,8 @@ class StoryboardApi(object):
                  returns the request thread.
         """
 
-        all_params = ['storyborad_id', 'fields']
-        all_params.append('async')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params = ['storyborad_id', 'fields', 'async', '_return_http_data_only', '_preload_content',
+                      '_request_timeout']
 
         params = locals()
         for key, val in six.iteritems(params['kwargs']):
@@ -238,17 +228,15 @@ class StoryboardApi(object):
         List Of Storyboards
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.get_storyboards(async=True)
+        >>> thread = client.get_storyboards(async=True)
         >>> result = thread.get()
 
-        :param async bool
-        :param str fields: Choose which fields should return. `GET  /storyboards/?fields=fps,storyboard_id,width,height`
-        :param bool desc: Allow ascending and descending sorting. `GET / storyboards/?desc=true`
-        :param int limit: Set limit of results `GET  /storyboards/?limit=5 `
-        :param int offset: To get a different set of items, you can use the offset and limit parameters in the GET request’s query string  `GET  /storyboards/?offset=5&limit=5 ` Returns scenes 6..10.
-        :return: StoryboardList
-                 If the method is called asynchronously,
-                 returns the request thread.
+        :param async bool :param str fields: Choose which fields should return. `GET  /storyboards/?fields=fps,
+        storyboard_id,width,height` :param bool desc: Allow ascending and descending sorting. `GET /
+        storyboards/?desc=true` :param int limit: Set limit of results `GET  /storyboards/?limit=5 ` :param int
+        offset: To get a different set of items, you can use the offset and limit parameters in the GET request’s
+        query string  `GET  /storyboards/?offset=5&limit=5 ` Returns scenes 6..10. :return: StoryboardList If the
+        method is called asynchronously, returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async'):
@@ -263,24 +251,19 @@ class StoryboardApi(object):
         List Of Storyboards
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.get_storyboards_with_http_info(async=True)
+        >>> thread = client.get_storyboards_with_http_info(async=True)
         >>> result = thread.get()
 
-        :param async bool
-        :param str fields: Choose which fields should return. `GET  /storyboards/?fields=fps,storyboard_id,width,height`
-        :param bool desc: Allow ascending and descending sorting. `GET / storyboards/?desc=true`
-        :param int limit: Set limit of results `GET  /storyboards/?limit=5 `
-        :param int offset: To get a different set of items, you can use the offset and limit parameters in the GET request’s query string  `GET  /storyboards/?offset=5&limit=5 ` Returns scenes 6..10.
-        :return: StoryboardList
-                 If the method is called asynchronously,
-                 returns the request thread.
+        :param async bool :param str fields: Choose which fields should return. `GET  /storyboards/?fields=fps,
+        storyboard_id,width,height` :param bool desc: Allow ascending and descending sorting. `GET /
+        storyboards/?desc=true` :param int limit: Set limit of results `GET  /storyboards/?limit=5 ` :param int
+        offset: To get a different set of items, you can use the offset and limit parameters in the GET request’s
+        query string  `GET  /storyboards/?offset=5&limit=5 ` Returns scenes 6..10. :return: StoryboardList If the
+        method is called asynchronously, returns the request thread.
         """
 
-        all_params = ['fields', 'desc', 'limit', 'offset']
-        all_params.append('async')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params = ['fields', 'desc', 'limit', 'offset', 'async', '_return_http_data_only', '_preload_content',
+                      '_request_timeout']
 
         params = locals()
         for key, val in six.iteritems(params['kwargs']):

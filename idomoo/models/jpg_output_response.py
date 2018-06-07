@@ -94,7 +94,8 @@ class JPGOutputResponse(object):
     def time(self):
         """Gets the time of this JPGOutputResponse.
 
-        The frame of the video that was rendered. Can also be negative number that will be calculated from the end of the video.
+        The frame of the video that was rendered. Can also be negative number that will be calculated from the end of
+        the video.
 
         :return: The time of this JPGOutputResponse.
         :rtype: float
@@ -105,7 +106,8 @@ class JPGOutputResponse(object):
     def time(self, time):
         """Sets the time of this JPGOutputResponse.
 
-        The frame of the video that was rendered. Can also be negative number that will be calculated from the end of the video.
+        The frame of the video that was rendered. Can also be negative number that will be calculated from the end of
+        the video.
 
         :param time: The time of this JPGOutputResponse.
         :type: float

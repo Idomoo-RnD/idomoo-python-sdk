@@ -29,10 +29,11 @@ client.storyboards.generate(sb_request)
 
 2. Generate a collection of scenes
 ```python
+import idomoo
 from idomoo import IdomooClient, Timeline, Scene, Media, TextProperties, SceneAPIRequest, helpers, Text
 
-client = IdomooClient(region='usa', account_id='ACCOUNT_ID',
-                  api_secret_key='API_SECRET_KEY')
+configuration = idomoo.Configuration()
+client = idomoo.IdomooClient(configuration=configuration)
 timeline = Timeline()
 
 scene = Scene(scene_id=1234)

@@ -16,6 +16,7 @@ import re
 
 import six
 
+from idomoo import utils
 from idomoo.models.output import Output
 from idomoo.models.timeline import Timeline
 
@@ -95,7 +96,8 @@ class SceneAPIRequest(object):
     def video_file_name(self):
         """Gets the video_file_name of this SceneAPIRequest.
 
-        The unique file name for all output types. After the file name, the suffix is added after an underscore. Only the following characters are allowed: a-z A-Z 0-9 _
+        The unique file name for all output types. After the file name, the suffix is added after an underscore. Only
+        the following characters are allowed: a-z A-Z 0-9 _
 
         :return: The video_file_name of this SceneAPIRequest.
         :rtype: str
@@ -106,13 +108,15 @@ class SceneAPIRequest(object):
     def video_file_name(self, video_file_name):
         """Sets the video_file_name of this SceneAPIRequest.
 
-        The unique file name for all output types. After the file name, the suffix is added after an underscore. Only the following characters are allowed: a-z A-Z 0-9 _
+        The unique file name for all output types. After the file name, the suffix is added after an underscore. Only
+        the following characters are allowed: a-z A-Z 0-9 _
 
         :param video_file_name: The video_file_name of this SceneAPIRequest.
         :type: str
         """
-        if video_file_name is not None and not re.search('^[A-Za-z0-9_]+$', video_file_name):
-            raise ValueError("Invalid value for `video_file_name`, must be a follow pattern or equal to `/^[A-Za-z0-9_]+$/`")
+        if video_file_name is not None and not re.search(utils.VALID_VIDEO_NAME_REGEX, video_file_name):
+            raise ValueError("Invalid value for `video_file_name`, must be a follow pattern or equal to `%s`"
+                             % utils.VALID_VIDEO_NAME_REGEX)
 
         self._video_file_name = video_file_name
 
@@ -143,7 +147,9 @@ class SceneAPIRequest(object):
     def storage(self):
         """Gets the storage of this SceneAPIRequest.
 
-        By default all videos are saved on Idomoo servers. For clients working with professional services, storage can be defined so that videos are stored on another storage. Please contact support or your project manager to define storage.
+        By default all videos are saved on Idomoo servers. For clients working with professional services,
+        storage can be defined so that videos are stored on another storage. Please contact support or your project
+        manager to define storage.
 
         :return: The storage of this SceneAPIRequest.
         :rtype: list[int]
@@ -154,7 +160,9 @@ class SceneAPIRequest(object):
     def storage(self, storage):
         """Sets the storage of this SceneAPIRequest.
 
-        By default all videos are saved on Idomoo servers. For clients working with professional services, storage can be defined so that videos are stored on another storage. Please contact support or your project manager to define storage.
+        By default all videos are saved on Idomoo servers. For clients working with professional services,
+        storage can be defined so that videos are stored on another storage. Please contact support or your project
+        manager to define storage.
 
         :param storage: The storage of this SceneAPIRequest.
         :type: list[int]

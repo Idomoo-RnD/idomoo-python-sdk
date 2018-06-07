@@ -59,7 +59,7 @@ def JPG(time, height=720):
     return outputs
 
 
-def Mp4_and_Thumbnail(time, height=720):
+def MP4_and_Thumbnail(time, height=720):
     """
       Creates an MP4 output object
       :param height:

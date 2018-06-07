@@ -12,7 +12,6 @@
 
 
 import pprint
-import re
 
 import six
 
@@ -58,7 +57,8 @@ class GIFOutput(object):
         'label': 'label'
     }
 
-    def __init__(self, gif_fps=None, color_depth=None, gif_loop=None, height=None, start=None, duration=None, suffix=None, overlay=None, overlay_alignment=None, overlay_scale='fit', label=None):
+    def __init__(self, gif_fps=None, color_depth=None, gif_loop=None, height=None, start=None, duration=None,
+                 suffix=None, overlay=None, overlay_alignment=None, overlay_scale='fit', label=None):
         """GIFOutput - a model defined in Swagger"""
 
         self._gif_fps = None
@@ -172,7 +172,9 @@ class GIFOutput(object):
     def height(self):
         """Gets the height of this GIFOutput.
 
-        Height of the media to be rendered, in pixels. Should be the height of your scenes unless a smaller resolution is needed. Resolution higher than the scene resolution reduces quality. The width is automatically calculated to keep the aspect ratio.
+        Height of the media to be rendered, in pixels. Should be the height of your scenes unless a smaller
+        resolution is needed. Resolution higher than the scene resolution reduces quality. The width is automatically
+        calculated to keep the aspect ratio.
 
         :return: The height of this GIFOutput.
         :rtype: float
@@ -183,7 +185,9 @@ class GIFOutput(object):
     def height(self, height):
         """Sets the height of this GIFOutput.
 
-        Height of the media to be rendered, in pixels. Should be the height of your scenes unless a smaller resolution is needed. Resolution higher than the scene resolution reduces quality. The width is automatically calculated to keep the aspect ratio.
+        Height of the media to be rendered, in pixels. Should be the height of your scenes unless a smaller
+        resolution is needed. Resolution higher than the scene resolution reduces quality. The width is automatically
+        calculated to keep the aspect ratio.
 
         :param height: The height of this GIFOutput.
         :type: float
@@ -245,7 +249,8 @@ class GIFOutput(object):
     def suffix(self):
         """Gets the suffix of this GIFOutput.
 
-        Unique ending of the file name so several outputs can be created then identified. Required if there is more then 1 video output.
+        Unique ending of the file name so several outputs can be created then identified. Required if there is more
+        then 1 video output.
 
         :return: The suffix of this GIFOutput.
         :rtype: str
@@ -256,7 +261,8 @@ class GIFOutput(object):
     def suffix(self, suffix):
         """Sets the suffix of this GIFOutput.
 
-        Unique ending of the file name so several outputs can be created then identified. Required if there is more then 1 video output.
+        Unique ending of the file name so several outputs can be created then identified. Required if there is more
+        then 1 video output.
 
         :param suffix: The suffix of this GIFOutput.
         :type: str
@@ -291,7 +297,8 @@ class GIFOutput(object):
     def overlay_alignment(self):
         """Gets the overlay_alignment of this GIFOutput.
 
-        Alignment for overlay image in case the image doesn't fit the video perfectly. The first item in the array is X. The second is Y.
+        Alignment for overlay image in case the image doesn't fit the video perfectly. The first item in the array is
+        X. The second is Y.
 
         :return: The overlay_alignment of this GIFOutput.
         :rtype: list[str]
@@ -302,7 +309,8 @@ class GIFOutput(object):
     def overlay_alignment(self, overlay_alignment):
         """Sets the overlay_alignment of this GIFOutput.
 
-        Alignment for overlay image in case the image doesn't fit the video perfectly. The first item in the array is X. The second is Y.
+        Alignment for overlay image in case the image doesn't fit the video perfectly. The first item in the array is
+        X. The second is Y.
 
         :param overlay_alignment: The overlay_alignment of this GIFOutput.
         :type: list[str]
@@ -321,7 +329,11 @@ class GIFOutput(object):
     def overlay_scale(self):
         """Gets the overlay_scale of this GIFOutput.
 
-        Scale the overlay image if it's not the same size as the video. * Fit: scale the image up or down so it's completely visible in the video's resolution. If not the same aspect ratio, transparency is added around the image according to the alignment settings. * Fill: scale the image up or down so it completely fills the video. If not the same aspect ratio, the image is cropped according to the alignment settings.  * None: don't resize the overlay image.
+        Scale the overlay image if it's not the same size as the video. * Fit: scale the image up or down so it's
+        completely visible in the video's resolution. If not the same aspect ratio, transparency is added around the
+        image according to the alignment settings. * Fill: scale the image up or down so it completely fills the
+        video. If not the same aspect ratio, the image is cropped according to the alignment settings.  * None: don't
+        resize the overlay image.
 
         :return: The overlay_scale of this GIFOutput.
         :rtype: str
@@ -332,7 +344,11 @@ class GIFOutput(object):
     def overlay_scale(self, overlay_scale):
         """Sets the overlay_scale of this GIFOutput.
 
-        Scale the overlay image if it's not the same size as the video. * Fit: scale the image up or down so it's completely visible in the video's resolution. If not the same aspect ratio, transparency is added around the image according to the alignment settings. * Fill: scale the image up or down so it completely fills the video. If not the same aspect ratio, the image is cropped according to the alignment settings.  * None: don't resize the overlay image.
+        Scale the overlay image if it's not the same size as the video. * Fit: scale the image up or down so it's
+        completely visible in the video's resolution. If not the same aspect ratio, transparency is added around the
+        image according to the alignment settings. * Fill: scale the image up or down so it completely fills the
+        video. If not the same aspect ratio, the image is cropped according to the alignment settings.  * None: don't
+        resize the overlay image.
 
         :param overlay_scale: The overlay_scale of this GIFOutput.
         :type: str
@@ -350,7 +366,8 @@ class GIFOutput(object):
     def label(self):
         """Gets the label of this GIFOutput.
 
-        This label is another way to identify this specific output. The label is returned in the response, but does not appear in the file name.
+        This label is another way to identify this specific output. The label is returned in the response,
+        but does not appear in the file name.
 
         :return: The label of this GIFOutput.
         :rtype: str
@@ -361,7 +378,8 @@ class GIFOutput(object):
     def label(self, label):
         """Sets the label of this GIFOutput.
 
-        This label is another way to identify this specific output. The label is returned in the response, but does not appear in the file name.
+        This label is another way to identify this specific output. The label is returned in the response,
+        but does not appear in the file name.
 
         :param label: The label of this GIFOutput.
         :type: str

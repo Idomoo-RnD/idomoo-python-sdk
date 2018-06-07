@@ -62,7 +62,9 @@ class Scene(object):
         'audio': 'audio'
     }
 
-    def __init__(self, scene_id=None, unique_scene_id=None, z_index=None, duration_in_seconds=None, start_time_offset_unique_scene_id=None, start_time_offset_seconds=None, start_time_in_seconds=None, scene_start_in_seconds=None, media=list(), text=list(), audio=list()):
+    def __init__(self, scene_id, unique_scene_id=None, z_index=None, duration_in_seconds=None,
+                 start_time_offset_unique_scene_id=None, start_time_offset_seconds=None, start_time_in_seconds=None,
+                 scene_start_in_seconds=None, media=list(), text=list(), audio=list()):
         """Scene - a model defined in Swagger"""
 
         self._scene_id = None

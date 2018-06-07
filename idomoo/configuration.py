@@ -10,7 +10,6 @@
 
 """
 
-
 from __future__ import absolute_import
 
 import copy
@@ -33,6 +32,7 @@ _endpoint_map = {
     'usa': 'https://usa-api.idomoo.com/api/v2',
     'eur': 'https://eur-api.idomoo.com/api/v2'
 }
+
 
 class TypeWithDefault(type):
     def __init__(cls, name, bases, dct):
@@ -265,9 +265,9 @@ class Configuration(six.with_metaclass(TypeWithDefault, object)):
 
         :return: The report for debugging.
         """
-        return "Python SDK Debug Report:\n"\
-               "OS: {env}\n"\
-               "Python Version: {pyversion}\n"\
-               "Version of the API: 2.0\n"\
-               "SDK Package Version: 1.0.0".\
-               format(env=sys.platform, pyversion=sys.version)
+        return "Python SDK Debug Report:\n" \
+               "OS: {env}\n" \
+               "Python Version: {pyversion}\n" \
+               "Version of the API: 2.0\n" \
+               "SDK Package Version: 1.0.0". \
+            format(env=sys.platform, pyversion=sys.version)

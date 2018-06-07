@@ -16,6 +16,7 @@ import re
 
 import six
 
+from idomoo import utils
 from idomoo.models.text_properties import TextProperties
 
 
@@ -66,7 +67,9 @@ class Text(object):
         'is_hidden': 'is_hidden'
     }
 
-    def __init__(self, key=None, val=list(), asset_path=None, font_size=None, text_color=None, alignment=None, wrapping_shrink=None, wrapping_breakline=None, wrapping_minimum=None, wrapping_truncate=False, wrapping_truncate_string='…', right_to_left=False, vertical=False, is_hidden=False):
+    def __init__(self, key=None, val=None, asset_path=None, font_size=None, text_color=None, alignment=None,
+                 wrapping_shrink=None, wrapping_breakline=None, wrapping_minimum=None, wrapping_truncate=False,
+                 wrapping_truncate_string='…', right_to_left=False, vertical=False, is_hidden=False):
         """Text - a model defined in Swagger"""
 
         self._key = None
@@ -156,7 +159,7 @@ class Text(object):
         :type: list[TextProperties]
         """
         if val is None:
-            raise ValueError("Invalid value for `val`, must not be `None`")
+            val = list()
 
         self._val = val
 
@@ -164,7 +167,8 @@ class Text(object):
     def asset_path(self):
         """Gets the asset_path of this Text.
 
-        Path to the default font to use. This can be overwritten in `Text Properties`. However this is the font to be used for calculating the location of the baseline.  The default font is the one packaged with the scene.
+        Path to the default font to use. This can be overwritten in `Text Properties`. However this is the font to be
+        used for calculating the location of the baseline.  The default font is the one packaged with the scene.
 
         :return: The asset_path of this Text.
         :rtype: str
@@ -175,13 +179,15 @@ class Text(object):
     def asset_path(self, asset_path):
         """Sets the asset_path of this Text.
 
-        Path to the default font to use. This can be overwritten in `Text Properties`. However this is the font to be used for calculating the location of the baseline.  The default font is the one packaged with the scene.
+        Path to the default font to use. This can be overwritten in `Text Properties`. However this is the font to be
+        used for calculating the location of the baseline.  The default font is the one packaged with the scene.
 
         :param asset_path: The asset_path of this Text.
         :type: str
         """
-        if asset_path is not None and not re.search('^(http|ual|pal)', asset_path):
-            raise ValueError("Invalid value for `asset_path`, must be a follow pattern or equal to `/^(http|ual|pal)/`")
+        if asset_path is not None and not re.search(utils.VALID_ASSET_PATH_REGEX, asset_path):
+            raise ValueError("Invalid value for `asset_path`, must be a follow pattern or equal to `%s`"
+                             % utils.VALID_ASSET_PATH_REGEX)
 
         self._asset_path = asset_path
 
@@ -223,13 +229,14 @@ class Text(object):
     def text_color(self, text_color):
         """Sets the text_color of this Text.
 
-        The color of the text. This can be overwritten by `Text Properties`. Default is the color of the text packaged with the scene.  Use this syntax: `\"rgb(###, ###, ###)\"`. Use 8bit color ranging from `0-255`.
+        The color of the text. This can be overwritten by `Text Properties`. Default is the color of the text
+        packaged with the scene.  Use this syntax: `\"rgb(###, ###, ###)\"`. Use 8bit color ranging from `0-255`.
 
         :param text_color: The text_color of this Text.
         :type: str
         """
-        if text_color is not None and not re.search('^rgb\\((\\d{1,3}), (\\d{1,3}), (\\d{1,3})\\)', text_color):
-            raise ValueError("Invalid value for `text_color`, must be a follow pattern or equal to `/^rgb\\((\\d{1,3}), (\\d{1,3}), (\\d{1,3})\\)/`")
+        if text_color is not None and not re.search(utils.VALID_COLOR_REGEX, text_color):
+            raise ValueError("Invalid value for `text_color`, must be a follow pattern or equal to `%s`" % utils.VALID_COLOR_REGEX)
 
         self._text_color = text_color
 
@@ -237,7 +244,9 @@ class Text(object):
     def alignment(self):
         """Gets the alignment of this Text.
 
-        How to align the text in the bounding box. The first item in the array is X. The second is Y.  X defaults to what was packaged in the scene. Y defaults to top for placeholders generated with After Effects paragraph text layers, and bottom for placeholders generated with After Effects point text layers.
+        How to align the text in the bounding box. The first item in the array is X. The second is Y.  X defaults to
+        what was packaged in the scene. Y defaults to top for placeholders generated with After Effects paragraph
+        text layers, and bottom for placeholders generated with After Effects point text layers.
 
         :return: The alignment of this Text.
         :rtype: list[str]
@@ -248,7 +257,9 @@ class Text(object):
     def alignment(self, alignment):
         """Sets the alignment of this Text.
 
-        How to align the text in the bounding box. The first item in the array is X. The second is Y.  X defaults to what was packaged in the scene. Y defaults to top for placeholders generated with After Effects paragraph text layers, and bottom for placeholders generated with After Effects point text layers.
+        How to align the text in the bounding box. The first item in the array is X. The second is Y.  X defaults to
+        what was packaged in the scene. Y defaults to top for placeholders generated with After Effects paragraph
+        text layers, and bottom for placeholders generated with After Effects point text layers.
 
         :param alignment: The alignment of this Text.
         :type: list[str]
@@ -267,7 +278,10 @@ class Text(object):
     def wrapping_shrink(self):
         """Gets the wrapping_shrink of this Text.
 
-        If `\"wrapping_breakline\"` is false, this shrinks the font size when the width of the bounding box is reached.  If `\"wrapping_brealline\"` is true, this shrinks the font size when the height of the bounding box is reached.  The default depends on the type of text layer used in After Effects: * For point text layers: `\"true\"`. * For paragraph text layers: `\"false\"`.
+        If `\"wrapping_breakline\"` is false, this shrinks the font size when the width of the bounding box is
+        reached.  If `\"wrapping_brealline\"` is true, this shrinks the font size when the height of the bounding box
+        is reached.  The default depends on the type of text layer used in After Effects: * For point text layers:
+        `\"true\"`. * For paragraph text layers: `\"false\"`.
 
         :return: The wrapping_shrink of this Text.
         :rtype: bool
@@ -278,7 +292,10 @@ class Text(object):
     def wrapping_shrink(self, wrapping_shrink):
         """Sets the wrapping_shrink of this Text.
 
-        If `\"wrapping_breakline\"` is false, this shrinks the font size when the width of the bounding box is reached.  If `\"wrapping_brealline\"` is true, this shrinks the font size when the height of the bounding box is reached.  The default depends on the type of text layer used in After Effects: * For point text layers: `\"true\"`. * For paragraph text layers: `\"false\"`.
+        If `\"wrapping_breakline\"` is false, this shrinks the font size when the width of the bounding box is
+        reached.  If `\"wrapping_brealline\"` is true, this shrinks the font size when the height of the bounding box
+        is reached.  The default depends on the type of text layer used in After Effects: * For point text layers:
+        `\"true\"`. * For paragraph text layers: `\"false\"`.
 
         :param wrapping_shrink: The wrapping_shrink of this Text.
         :type: bool
@@ -290,7 +307,9 @@ class Text(object):
     def wrapping_breakline(self):
         """Gets the wrapping_breakline of this Text.
 
-        The text automatically breaks into more lines when the width of the bounding box is reached. Newline characters in the text are still used.  The default depends on the type of text layer used in After Effects: * For point text layers: `\"false\"`. * For paragraph text layers: `\"true\"`.
+        The text automatically breaks into more lines when the width of the bounding box is reached. Newline
+        characters in the text are still used.  The default depends on the type of text layer used in After Effects:
+        * For point text layers: `\"false\"`. * For paragraph text layers: `\"true\"`.
 
         :return: The wrapping_breakline of this Text.
         :rtype: bool
@@ -301,7 +320,9 @@ class Text(object):
     def wrapping_breakline(self, wrapping_breakline):
         """Sets the wrapping_breakline of this Text.
 
-        The text automatically breaks into more lines when the width of the bounding box is reached. Newline characters in the text are still used.  The default depends on the type of text layer used in After Effects: * For point text layers: `\"false\"`. * For paragraph text layers: `\"true\"`.
+        The text automatically breaks into more lines when the width of the bounding box is reached. Newline
+        characters in the text are still used.  The default depends on the type of text layer used in After Effects:
+        * For point text layers: `\"false\"`. * For paragraph text layers: `\"true\"`.
 
         :param wrapping_breakline: The wrapping_breakline of this Text.
         :type: bool
@@ -336,7 +357,9 @@ class Text(object):
     def wrapping_truncate(self):
         """Gets the wrapping_truncate of this Text.
 
-        Text can be drawn outside the bounding box. With this parameter true, the text is truncated at the last whitespace inside the bounding box and replaced with `\"wrapping_truncate_string\"`. The default string is an ellipsis (…).
+        Text can be drawn outside the bounding box. With this parameter true, the text is truncated at the last
+        whitespace inside the bounding box and replaced with `\"wrapping_truncate_string\"`. The default string is an
+        ellipsis (…).
 
         :return: The wrapping_truncate of this Text.
         :rtype: bool
@@ -347,7 +370,9 @@ class Text(object):
     def wrapping_truncate(self, wrapping_truncate):
         """Sets the wrapping_truncate of this Text.
 
-        Text can be drawn outside the bounding box. With this parameter true, the text is truncated at the last whitespace inside the bounding box and replaced with `\"wrapping_truncate_string\"`. The default string is an ellipsis (…).
+        Text can be drawn outside the bounding box. With this parameter true, the text is truncated at the last
+        whitespace inside the bounding box and replaced with `\"wrapping_truncate_string\"`. The default string is an
+        ellipsis (…).
 
         :param wrapping_truncate: The wrapping_truncate of this Text.
         :type: bool
@@ -382,7 +407,8 @@ class Text(object):
     def right_to_left(self):
         """Gets the right_to_left of this Text.
 
-        When true, the paragraph is to run from right to left. This is to support right to left languages such as Arabic and Hebrew.
+        When true, the paragraph is to run from right to left. This is to support right to left languages such as
+        Arabic and Hebrew.
 
         :return: The right_to_left of this Text.
         :rtype: bool
@@ -393,7 +419,8 @@ class Text(object):
     def right_to_left(self, right_to_left):
         """Sets the right_to_left of this Text.
 
-        When true, the paragraph is to run from right to left. This is to support right to left languages such as Arabic and Hebrew.
+        When true, the paragraph is to run from right to left. This is to support right to left languages such as
+        Arabic and Hebrew.
 
         :param right_to_left: The right_to_left of this Text.
         :type: bool

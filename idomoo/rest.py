@@ -8,7 +8,6 @@
 
 """
 
-
 from __future__ import absolute_import
 
 import io
@@ -22,18 +21,20 @@ import certifi
 import six
 from six.moves.urllib.parse import urlencode
 
+from idomoo.mapper import ApiException
+
 try:
     import urllib3
 except ImportError:
     raise ImportError('Idomoo python client requires urllib3.')
-
 
 logger = logging.getLogger(__name__)
 
 
 class RESTResponse(io.IOBase):
 
-    def __init__(self, resp):
+    def __init__(self, resp, *args, **kwargs):
+        super().__init__(*args, **kwargs)
         self.urllib3_response = resp
         self.status = resp.status
         self.reason = resp.reason
@@ -138,7 +139,7 @@ class RESTClientObject(object):
 
         timeout = None
         if _request_timeout:
-            if isinstance(_request_timeout, (int, ) if six.PY3 else (int, long)):
+            if isinstance(_request_timeout, (int,) if six.PY3 else (int, long)):
                 timeout = urllib3.Timeout(total=_request_timeout)
             elif (isinstance(_request_timeout, tuple) and
                   len(_request_timeout) == 2):
@@ -224,7 +225,14 @@ class RESTClientObject(object):
 
         if not 200 <= r.status <= 299:
             raise ApiException(http_resp=r)
-
+        elif r.data is not None:
+            try:
+                response = json.loads(r.data)
+                status = response.get('status')
+                if status is not None and 'failed' in status.lower():
+                    raise ApiException(http_resp=r)
+            except TypeError:
+                pass
         return r
 
     def GET(self, url, headers=None, query_params=None, _preload_content=True,
@@ -291,31 +299,3 @@ class RESTClientObject(object):
                             _preload_content=_preload_content,
                             _request_timeout=_request_timeout,
                             body=body)
-
-
-class ApiException(Exception):
-
-    def __init__(self, status=None, reason=None, http_resp=None):
-        if http_resp:
-            self.status = http_resp.status
-            self.reason = http_resp.reason
-            self.body = http_resp.data
-            self.headers = http_resp.getheaders()
-        else:
-            self.status = status
-            self.reason = reason
-            self.body = None
-            self.headers = None
-
-    def __str__(self):
-        """Custom error messages for exception"""
-        error_message = "({0})\n"\
-                        "Reason: {1}\n".format(self.status, self.reason)
-        if self.headers:
-            error_message += "HTTP response headers: {0}\n".format(
-                self.headers)
-
-        if self.body:
-            error_message += "HTTP response body: {0}\n".format(self.body)
-
-        return error_message
