@@ -310,7 +310,8 @@ class Scene(object):
         :param media: The media of this Scene.
         :type: list[Media]
         """
-
+        if media is None:
+            media = list()
         self._media = media
 
     @property
@@ -333,7 +334,8 @@ class Scene(object):
         :param text: The text of this Scene.
         :type: list[Text]
         """
-
+        if text is None:
+            text = list()
         self._text = text
 
     @property
@@ -356,7 +358,8 @@ class Scene(object):
         :param audio: The audio of this Scene.
         :type: list[Audio]
         """
-
+        if audio is None:
+            audio = list()
         self._audio = audio
 
     def to_dict(self):

@@ -185,9 +185,9 @@ class Text(object):
         :param asset_path: The asset_path of this Text.
         :type: str
         """
-        if asset_path is not None and not re.search(utils.VALID_ASSET_PATH_REGEX, asset_path):
-            raise ValueError("Invalid value for `asset_path`, must be a follow pattern or equal to `%s`"
-                             % utils.VALID_ASSET_PATH_REGEX)
+        # if asset_path is not None and not re.search(utils.VALID_ASSET_PATH_REGEX, asset_path):
+        #     raise ValueError("Invalid value for `asset_path`, must be a follow pattern or equal to `%s`"
+        #                      % utils.VALID_ASSET_PATH_REGEX)
 
         self._asset_path = asset_path
 
