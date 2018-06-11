@@ -12,7 +12,6 @@
 
 
 import pprint
-import re
 
 import six
 
@@ -64,7 +63,7 @@ class Scene(object):
 
     def __init__(self, scene_id, unique_scene_id=None, z_index=None, duration_in_seconds=None,
                  start_time_offset_unique_scene_id=None, start_time_offset_seconds=None, start_time_in_seconds=None,
-                 scene_start_in_seconds=None, media=list(), text=list(), audio=list()):
+                 scene_start_in_seconds=None, media=None, text=None, audio=None):
         """Scene - a model defined in Swagger"""
 
         self._scene_id = None
@@ -131,7 +130,8 @@ class Scene(object):
     def unique_scene_id(self):
         """Gets the unique_scene_id of this Scene.
 
-        As the same scene can be used several time, the unique scene ID is a way for the developer to identify this specific use of the scene. Must be used for `\"start_time_offset_unique_scene_id\"` to work.
+        As the same scene can be used several time, the unique scene ID is a way for the developer to identify this
+        specific use of the scene. Must be used for `\"start_time_offset_unique_scene_id\"` to work.
 
         :return: The unique_scene_id of this Scene.
         :rtype: str
@@ -142,7 +142,8 @@ class Scene(object):
     def unique_scene_id(self, unique_scene_id):
         """Sets the unique_scene_id of this Scene.
 
-        As the same scene can be used several time, the unique scene ID is a way for the developer to identify this specific use of the scene. Must be used for `\"start_time_offset_unique_scene_id\"` to work.
+        As the same scene can be used several time, the unique scene ID is a way for the developer to identify this
+        specific use of the scene. Must be used for `\"start_time_offset_unique_scene_id\"` to work.
 
         :param unique_scene_id: The unique_scene_id of this Scene.
         :type: str
@@ -154,7 +155,8 @@ class Scene(object):
     def z_index(self):
         """Gets the z_index of this Scene.
 
-        When layering scene on top of scene a scene with a higher Z index will be on top of a scene with a lower Z index.
+        When layering scene on top of scene a scene with a higher Z index will be on top of a scene with a
+        lower Z index.
 
         :return: The z_index of this Scene.
         :rtype: int
@@ -165,7 +167,8 @@ class Scene(object):
     def z_index(self, z_index):
         """Sets the z_index of this Scene.
 
-        When layering scene on top of scene a scene with a higher Z index will be on top of a scene with a lower Z index.
+        When layering scene on top of scene a scene with a higher Z index will be on top of a scene with a
+        lower Z index.
 
         :param z_index: The z_index of this Scene.
         :type: int
@@ -202,7 +205,8 @@ class Scene(object):
     def start_time_offset_unique_scene_id(self):
         """Gets the start_time_offset_unique_scene_id of this Scene.
 
-        To start this scene when another scene ends, use the other scene's `\"unique_scene_id\"` here. Must not be used with `\"start_time_in_seconds\"`.
+        To start this scene when another scene ends, use the other scene's `\"unique_scene_id\"` here. Must not be
+        used with `\"start_time_in_seconds\"`.
 
         :return: The start_time_offset_unique_scene_id of this Scene.
         :rtype: str
@@ -213,7 +217,8 @@ class Scene(object):
     def start_time_offset_unique_scene_id(self, start_time_offset_unique_scene_id):
         """Sets the start_time_offset_unique_scene_id of this Scene.
 
-        To start this scene when another scene ends, use the other scene's `\"unique_scene_id\"` here. Must not be used with `\"start_time_in_seconds\"`.
+        To start this scene when another scene ends, use the other scene's `\"unique_scene_id\"` here. Must not be
+        used with `\"start_time_in_seconds\"`.
 
         :param start_time_offset_unique_scene_id: The start_time_offset_unique_scene_id of this Scene.
         :type: str
@@ -225,7 +230,8 @@ class Scene(object):
     def start_time_offset_seconds(self):
         """Gets the start_time_offset_seconds of this Scene.
 
-        Offset in seconds from when the scene specified in `\"start_time_offset_unique_scene_id\"` ends. Can be used with negative values.
+        Offset in seconds from when the scene specified in `\"start_time_offset_unique_scene_id\"` ends. Can be used
+        with negative values.
 
         :return: The start_time_offset_seconds of this Scene.
         :rtype: float
@@ -236,7 +242,8 @@ class Scene(object):
     def start_time_offset_seconds(self, start_time_offset_seconds):
         """Sets the start_time_offset_seconds of this Scene.
 
-        Offset in seconds from when the scene specified in `\"start_time_offset_unique_scene_id\"` ends. Can be used with negative values.
+        Offset in seconds from when the scene specified in `\"start_time_offset_unique_scene_id\"` ends. Can be used
+        with negative values.
 
         :param start_time_offset_seconds: The start_time_offset_seconds of this Scene.
         :type: float
@@ -248,7 +255,8 @@ class Scene(object):
     def start_time_in_seconds(self):
         """Gets the start_time_in_seconds of this Scene.
 
-        Absolute time for the scene to start. Can't be sent with `\"start_time_offset_unique_scene_id\"` and `\"start_time_offset_seconds\"`.
+        Absolute time for the scene to start. Can't be sent with `\"start_time_offset_unique_scene_id\"` and
+        `\"start_time_offset_seconds\"`.
 
         :return: The start_time_in_seconds of this Scene.
         :rtype: float
@@ -259,7 +267,8 @@ class Scene(object):
     def start_time_in_seconds(self, start_time_in_seconds):
         """Sets the start_time_in_seconds of this Scene.
 
-        Absolute time for the scene to start. Can't be sent with `\"start_time_offset_unique_scene_id\"` and `\"start_time_offset_seconds\"`.
+        Absolute time for the scene to start. Can't be sent with `\"start_time_offset_unique_scene_id\"` and
+        `\"start_time_offset_seconds\"`.
 
         :param start_time_in_seconds: The start_time_in_seconds of this Scene.
         :type: float
@@ -294,7 +303,8 @@ class Scene(object):
     def media(self):
         """Gets the media of this Scene.
 
-        Array of all the media placeholders, including image, video and color. All placeholders need to be called unless the defaults saved in the IDM are to be used.
+        Array of all the media placeholders, including image, video and color. All placeholders need to be called
+        unless the defaults saved in the IDM are to be used.
 
         :return: The media of this Scene.
         :rtype: list[Media]
@@ -305,44 +315,51 @@ class Scene(object):
     def media(self, media):
         """Sets the media of this Scene.
 
-        Array of all the media placeholders, including image, video and color. All placeholders need to be called unless the defaults saved in the IDM are to be used.
+        Array of all the media placeholders, including image, video and color. All placeholders need to be called
+        unless the defaults saved in the IDM are to be used.
 
         :param media: The media of this Scene.
         :type: list[Media]
         """
         if media is None:
             media = list()
+
         self._media = media
 
     @property
     def text(self):
         """Gets the text of this Scene.
 
-        Array of all the text placeholders. All placeholders need to be called unless the defaults saved in the IDM are to be used.
+        Array of all the text placeholders. All placeholders need to be called unless the defaults saved in the IDM
+        are to be used.
 
         :return: The text of this Scene.
         :rtype: list[Text]
         """
+
         return self._text
 
     @text.setter
     def text(self, text):
         """Sets the text of this Scene.
 
-        Array of all the text placeholders. All placeholders need to be called unless the defaults saved in the IDM are to be used.
+        Array of all the text placeholders. All placeholders need to be called unless the defaults saved in the IDM
+        are to be used.
 
         :param text: The text of this Scene.
         :type: list[Text]
         """
         if text is None:
             text = list()
+
         self._text = text
 
     @property
     def audio(self):
         """Gets the audio of this Scene.
 
-        Array of all the audio placeholder. All placeholders need to be called unless the defaults saved in the IDM are to be used.
+        Array of all the audio placeholder. All placeholders need to be called unless the defaults saved in the IDM
+        are to be used.
 
         :return: The audio of this Scene.
         :rtype: list[Audio]
@@ -353,13 +370,15 @@ class Scene(object):
     def audio(self, audio):
         """Sets the audio of this Scene.
 
-        Array of all the audio placeholder. All placeholders need to be called unless the defaults saved in the IDM are to be used.
+        Array of all the audio placeholder. All placeholders need to be called unless the defaults saved in the IDM
+        are to be used.
 
         :param audio: The audio of this Scene.
         :type: list[Audio]
         """
         if audio is None:
             audio = list()
+
         self._audio = audio
 
     def to_dict(self):
