@@ -74,10 +74,11 @@ class Scene(object):
         self._start_time_offset_seconds = None
         self._start_time_in_seconds = None
         self._scene_start_in_seconds = None
-        self._media = None
-        self._text = None
-        self._audio = None
         self.discriminator = None
+
+        self.media = media
+        self.text = text
+        self.audio = audio
 
         self.scene_id = scene_id
         if unique_scene_id is not None:
@@ -94,12 +95,7 @@ class Scene(object):
             self.start_time_in_seconds = start_time_in_seconds
         if scene_start_in_seconds is not None:
             self.scene_start_in_seconds = scene_start_in_seconds
-        if media is not None:
-            self.media = media
-        if text is not None:
-            self.text = text
-        if audio is not None:
-            self.audio = audio
+
 
     @property
     def scene_id(self):

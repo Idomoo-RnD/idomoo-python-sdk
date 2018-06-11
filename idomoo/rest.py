@@ -30,6 +30,8 @@ except ImportError:
 
 logger = logging.getLogger(__name__)
 
+ALLOWED_ERROR_VALUES = ["GENERATION_FAILED", "Error"]
+
 
 class RESTResponse(io.IOBase):
 
@@ -229,7 +231,7 @@ class RESTClientObject(object):
             try:
                 response = json.loads(r.data)
                 status = response.get('status')
-                if status is not None and 'failed' in status.lower():
+                if status in ALLOWED_ERROR_VALUES:
                     raise ApiException(http_resp=r)
             except TypeError:
                 pass
