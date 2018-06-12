@@ -36,7 +36,7 @@ ALLOWED_ERROR_VALUES = ["GENERATION_FAILED", "Error"]
 class RESTResponse(io.IOBase):
 
     def __init__(self, resp, *args, **kwargs):
-        super().__init__(*args, **kwargs)
+        super(RESTResponse, self).__init__(*args, **kwargs)
         self.urllib3_response = resp
         self.status = resp.status
         self.reason = resp.reason
